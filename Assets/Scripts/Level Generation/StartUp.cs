@@ -38,9 +38,9 @@ public class StartUp : MonoBehaviour {
 				mapArray[i,j] = myCA.caveArr[i,j,strtLev]; 
 			}
 		}
-		//myCA.buildWalls();
-		//myCA.buildRoof();
-		//myCA.optimiseCells();
+		myCA.buildWalls();
+		myCA.buildRoof();
+		myCA.optimiseCells();
 
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {
