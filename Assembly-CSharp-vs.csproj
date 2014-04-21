@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{4ABD25F2-7453-1E14-1C63-BCE00338D1E5}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_4;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Scripts\Level Generation\CA3D.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\CAGens.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\LevelReader.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\StartUp.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\dataStartup.cs" />
+     <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
+     <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Scripts\Texturing\MapGuiTexture.cs" />
+     <Compile Include="Assets\Scripts\Texturing\MapTexture.cs" />
+     <Compile Include="Assets\Scripts\Texturing\Texture2.cs" />
+     <None Include="Assets\Level Files\Interior\interior7.txt" />
+     <None Include="Assets\Level Files\Interior\interior1.txt" />
+     <None Include="Assets\Level Files\Interior\interior5.txt" />
+     <None Include="Assets\Level Files\Interior\interior0.txt" />
+     <None Include="Assets\Level Files\Corners\corner5.txt" />
+     <None Include="Assets\Level Files\Corners\corner1.txt" />
+     <None Include="Assets\Level Files\Walls\wall0.txt" />
+     <None Include="Assets\Level Files\Interior\interior13.txt" />
+     <None Include="Assets\Level Files\Corners\corner4.txt" />
+     <None Include="Assets\Level Files\Interior\interior6.txt" />
+     <None Include="Assets\Level Files\Interior\interior8.txt" />
+     <None Include="Assets\Level Files\Walls\wall15.txt" />
+     <None Include="Assets\Level Files\Walls\wall6.txt" />
+     <None Include="Assets\Level Files\Corners\corner8.txt" />
+     <None Include="Assets\Level Files\Corners\corner12.txt" />
+     <None Include="Assets\Level Files\Corners\corner13.txt" />
+     <None Include="Assets\Level Files\Walls\wall5.txt" />
+     <None Include="Assets\Level Files\Interior\interior4.txt" />
+     <None Include="Assets\Level Files\Corners\corner9.txt" />
+     <None Include="Assets\Level Files\Corners\corner11.txt" />
+     <None Include="Assets\Level Files\Walls\wall3.txt" />
+     <None Include="Assets\Level Files\Walls\wall11.txt" />
+     <None Include="Assets\Level Files\Corners\corner2.txt" />
+     <None Include="Assets\Level Files\Interior\interior12.txt" />
+     <None Include="Assets\Level Files\Walls\wall12.txt" />
+     <None Include="Assets\Level Files\Interior\interior11.txt" />
+     <None Include="Assets\Level Files\Walls\wall14.txt" />
+     <None Include="Assets\Level Files\Corners\corner0.txt" />
+     <None Include="Assets\Level Files\Corners\corner3.txt" />
+     <None Include="Assets\Level Files\Corners\corner15.txt" />
+     <None Include="Assets\Level Files\Walls\wall2.txt" />
+     <None Include="Assets\Level Files\Interior\interior14.txt" />
+     <None Include="Assets\Level Files\Corners\corner6.txt" />
+     <None Include="Assets\Level Files\Walls\wall4.txt" />
+     <None Include="Assets\Level Files\Interior\interior9.txt" />
+     <None Include="Assets\Level Files\Corners\corner7.txt" />
+     <None Include="Assets\Level Files\Walls\wall10.txt" />
+     <None Include="Assets\Level Files\Walls\wall9.txt" />
+     <None Include="Assets\Level Files\Corners\corner10.txt" />
+     <None Include="Assets\Level Files\Interior\interior15.txt" />
+     <None Include="Assets\Level Files\Walls\wall7.txt" />
+     <None Include="Assets\Level Files\Interior\interior10.txt" />
+     <None Include="Assets\Level Files\Walls\wall13.txt" />
+     <None Include="Assets\Level Files\Walls\wall1.txt" />
+     <None Include="Assets\Level Files\Corners\corner14.txt" />
+     <None Include="Assets\Level Files\Interior\interior3.txt" />
+     <None Include="Assets\Level Files\Interior\interior2.txt" />
+     <None Include="Assets\Level Files\Walls\wall8.txt" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{B828064A-437F-82D3-EF2B-DA2B53BB594C}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
