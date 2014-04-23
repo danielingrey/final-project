@@ -2,8 +2,7 @@
 using System.Collections;
 using System.IO;
 using System;
-//using System.Linq;
-//using System.Xml.Linq;
+
 
 public class dataStartup : MonoBehaviour {
 
@@ -77,7 +76,7 @@ public class dataStartup : MonoBehaviour {
 			for( int z = 0; z < 64; z++) {
 				for(int y = 0; y < 16; y++) {
 					if(levelArr[x,z,y]==1) {
-						Transform cube = Instantiate(cubePrefab, new Vector3(x, y, z), Quaternion.identity) as Transform;							
+						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, y*1.5f, z*1.5f), Quaternion.identity) as Transform;							
 						int m = myMesh.getMesh(x,z,y);
 						//int rand = UnityEngine.Random.Range(0,4);
 						//cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
@@ -177,9 +176,10 @@ public class dataStartup : MonoBehaviour {
 	}
 
 	void placeInteriors() {
-		getSection (path + @"\Assets\Level Files\Interiors\interior0\interior");
 		for (int i = 1; i < 7; i++) {
 			for (int j = 1; j < 7; j++) {
+				int rand = UnityEngine.Random.Range(0,5);
+				getSection (path + @"\Assets\Level Files\Interiors\interior" + rand + @"\interior");
 				placeSection(i,j);
 			}
 		}
