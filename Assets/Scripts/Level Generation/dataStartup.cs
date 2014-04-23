@@ -2,22 +2,30 @@
 using System.Collections;
 using System.IO;
 using System;
+//using System.Linq;
+//using System.Xml.Linq;
 
 public class dataStartup : MonoBehaviour {
+
 	int counter = 0;
 	StreamReader file;
 	string line;
 	string[] lines = new string[8];
 	char[] nums;
-	int[,] myArr = new int[8,8];
+	int[,] myArr = new int[8,8];	
 	int[,,] my3DArr = new int[8,8,16];
+	//int[,,] my3DArr = Enumerable.Range(0, 0).ToArray(8,8,16);
 	int[,,] levelArr = new int[64, 64, 16];
 	int[] ij = {0,0};
+	CreateMesh myMesh;
 	public Transform cubePrefab;
-	// Use this for initialization
+	string path = Directory.GetCurrentDirectory();
 
 	void Start () {
-		getSection (@"C:\Users\Dan\Documents\Unity\Final Project\Assets\Level Files\Interiors\interior0\interior");
+
+		myMesh = new CreateMesh(64);
+
+		//getSection (path + @"\Assets\Level Files\Interiors\interior0\interior");
 			/*for (int k = 0; k < 16; k++) {
 					//
 					//file = new StreamReader(@"C:\Users\Dan\Documents\Unity\Final Project\Assets\Level Files\Corners\corner" + k + ".txt");
@@ -47,28 +55,33 @@ public class dataStartup : MonoBehaviour {
 				}
 				file.Close ();
 		}*/
-		for (int i = 1; i < 7; i++) {
+		/*for (int i = 1; i < 7; i++) {
 			for (int j = 1; j < 7; j++) {
 				placeSection(i,j);
 			}
-		}
+		}*/
 
-		getSection (@"C:\Users\Dan\Documents\Unity\Final Project\Assets\Level Files\Corners\corner0\corner");
+		//getSection (path + @"\Assets\Level Files\Corners\corner0\corner");
+		//int[, ,] arr3Dr90 = my3DArr.Rotate(RotateAxis.RotateZ, 90); 
+	    /*placeSection(0,0);
+		placeSection(0,7);
+		placeSection(7,0);
+		placeSection(7,7);*/
+		placeCorners();
+		placeWalls();
+		placeInteriors();
 
-	    placeSection(0,0);
-		//placeSection(0,7);
-		//placeSection(7,0);
-		//placeSection(7,7);
+
 
 		for(int x = 0; x < 64; x++) {				
 			for( int z = 0; z < 64; z++) {
 				for(int y = 0; y < 16; y++) {
 					if(levelArr[x,z,y]==1) {
-						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, y*1.5f, z*1.5f), Quaternion.identity) as Transform;							
-						/*int m = myMesh.getMesh(x,z,y);
-						int rand = Random.Range(0,4);
-						cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
-						cube.transform.parent = GameObject.FindGameObjectWithTag(myMesh.meshTags[m]).transform;*/
+						Transform cube = Instantiate(cubePrefab, new Vector3(x, y, z), Quaternion.identity) as Transform;							
+						int m = myMesh.getMesh(x,z,y);
+						//int rand = UnityEngine.Random.Range(0,4);
+						//cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
+						cube.transform.parent = GameObject.FindGameObjectWithTag(myMesh.meshTags[m]).transform;
 					}	
 				}
 			}
@@ -124,4 +137,52 @@ public class dataStartup : MonoBehaviour {
 			file.Close ();
 		}
 	}
+
+	void placeCorners() {
+		//Top left
+		getSection (path + @"\Assets\Level Files\Corners\CornersTL\corner0\cornerTL");
+		placeSection(0,0);
+		//Top right
+		getSection (path + @"\Assets\Level Files\Corners\CornersTR\corner0\cornerTR");
+		placeSection(0,7);
+		//Bottom left
+		getSection (path + @"\Assets\Level Files\Corners\CornersBL\corner0\cornerBL");
+		placeSection(7,0);
+		//Bottom right
+		getSection (path + @"\Assets\Level Files\Corners\CornersBR\corner0\cornerBR");
+		placeSection(7,7);
+	}
+
+	void placeWalls() {
+		//top
+		getSection (path + @"\Assets\Level Files\Walls\WallsT\wall0\wallT");
+		for (int i = 1; i < 7; i++) {
+			placeSection(0,i);
+		}
+		//right
+		getSection (path + @"\Assets\Level Files\Walls\WallsR\wall0\wallR");
+		for (int i = 1; i < 7; i++) {
+			placeSection(i,7);
+		}
+		//bottom
+		getSection (path + @"\Assets\Level Files\Walls\WallsB\wall0\wallB");
+		for (int i = 1; i < 7; i++) {
+			placeSection(7,i);
+		}
+		//left
+		getSection (path + @"\Assets\Level Files\Walls\WallsL\wall0\wallL");
+		for (int i = 1; i < 7; i++) {
+			placeSection(i,0);
+		}
+	}
+
+	void placeInteriors() {
+		getSection (path + @"\Assets\Level Files\Interiors\interior0\interior");
+		for (int i = 1; i < 7; i++) {
+			for (int j = 1; j < 7; j++) {
+				placeSection(i,j);
+			}
+		}
+	}
+
 }

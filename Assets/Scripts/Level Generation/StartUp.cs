@@ -14,7 +14,7 @@ public class StartUp : MonoBehaviour {
 	public string[] textrs;
 
 	void Start() {
-		length = 12*(8);
+		length = 64;
 		height = 60;
 		strtLev = 20;//20
 		roofLev = 30;//26
