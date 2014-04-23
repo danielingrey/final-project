@@ -48,17 +48,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Level Generation\AdHoc.cs" />
      <Compile Include="Assets\Scripts\Level Generation\AdHocStartUp.cs" />
-     <Compile Include="Assets\Scripts\Level Generation\AdHocStartupTest.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CA3D.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CAGens.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CAStartUp.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
-     <Compile Include="Assets\Scripts\Level Generation\LevelReader.cs" />
-     <Compile Include="Assets\Scripts\Level Generation\StartUp.cs" />
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
-     <Compile Include="Assets\Scripts\Texturing\MapGuiTexture.cs" />
-     <Compile Include="Assets\Scripts\Texturing\MapTexture.cs" />
      <Compile Include="Assets\Scripts\Texturing\Texture2.cs" />
      <None Include="Assets\Level Files\Corners\CornersTR\corner0\cornerTR15.txt" />
      <None Include="Assets\Level Files\Interiors\interior4\interior8.txt" />

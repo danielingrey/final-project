@@ -15,13 +15,14 @@ public class AdHoc {
 	int[,,] my3DArr;
 
 
+
 	public AdHoc(int l, int h, int sn) {
 		length = l;
 		height = h;
 		sectNum = sn;
-		lines = new string[l];
-		my3DArr = new int[l,l,h];
-		levelArr = new int[sn,sn,h];
+		lines = new string[length];
+		my3DArr = new int[length,length,height];
+		levelArr = new int[sectNum,sectNum,height];
 		path = Directory.GetCurrentDirectory();
 	}
 
@@ -53,6 +54,39 @@ public class AdHoc {
 			file.Close ();
 		}
 	}
+
+	void randomiseSection(string s) {
+		float prob;
+		string section = s;
+		if(section == "wall") {
+			prob = 0.45f;
+		} else if (section == "interior") {
+			prob = 0.33f;
+		} else {
+			prob = 0;
+		}
+		int rand = UnityEngine.Random.Range(0,3);
+		//for(int i = 0; i < rand; i++) {
+		//for(int y = 0; y < 16; y++) {	
+			for(int x = 0; x < 8; x++) {				
+				for( int z = 0; z < 8; z++) {
+					for(int y = 0; y < 16; y++) {
+					if(y-1 >= 0 && y < 8)  {
+							if (UnityEngine.Random.value < prob){								
+									if (my3DArr[x,z,y-1] == 1) my3DArr[x,z,y] = 1;								
+							}
+					} else if(y+1 <= 15 && y >= 8) {
+						if (UnityEngine.Random.value < prob){								
+							if (my3DArr[x,z,y+1] == 1) my3DArr[x,z,y] = 1;								
+						}
+					}
+
+					} 
+				}
+				
+			}
+		//}
+	}
 	
 	public void placeCorners() {
 		//Top left
@@ -70,33 +104,40 @@ public class AdHoc {
 	}
 	
 	public void placeWalls() {
+		string section = "wall";
 		//top
 		getSection (path + @"\Assets\Level Files\Walls\WallsT\wall0\wallT");
 		for (int i = 1; i < 7; i++) {
+			randomiseSection(section);
 			placeSection(0,i);
 		}
 		//right
 		getSection (path + @"\Assets\Level Files\Walls\WallsR\wall0\wallR");
 		for (int i = 1; i < 7; i++) {
+			randomiseSection(section);
 			placeSection(i,7);
 		}
 		//bottom
 		getSection (path + @"\Assets\Level Files\Walls\WallsB\wall0\wallB");
 		for (int i = 1; i < 7; i++) {
+			randomiseSection(section);
 			placeSection(7,i);
 		}
 		//left
 		getSection (path + @"\Assets\Level Files\Walls\WallsL\wall0\wallL");
 		for (int i = 1; i < 7; i++) {
+			randomiseSection(section);
 			placeSection(i,0);
 		}
 	}
 	
 	public void placeInteriors() {
+		string section = "interior";
 		for (int i = 1; i < 7; i++) {
 			for (int j = 1; j < 7; j++) {
 				int rand = UnityEngine.Random.Range(0,5);
 				getSection (path + @"\Assets\Level Files\Interiors\interior" + rand + @"\interior");
+				randomiseSection(section);
 				placeSection(i,j);
 			}
 		}
