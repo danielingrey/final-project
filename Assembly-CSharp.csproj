@@ -46,12 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Level Generation\AdHoc.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\AdHocStartUp.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\AdHocStartupTest.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CA3D.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CAGens.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\CAStartUp.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
      <Compile Include="Assets\Scripts\Level Generation\LevelReader.cs" />
      <Compile Include="Assets\Scripts\Level Generation\StartUp.cs" />
-     <Compile Include="Assets\Scripts\Level Generation\dataStartup.cs" />
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
      <Compile Include="Assets\Scripts\Texturing\MapGuiTexture.cs" />
