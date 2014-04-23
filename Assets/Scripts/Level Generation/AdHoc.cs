@@ -71,7 +71,7 @@ public class AdHoc {
 			for(int x = 0; x < 8; x++) {				
 				for( int z = 0; z < 8; z++) {
 					for(int y = 0; y < 16; y++) {
-					if(y-1 >= 0 && y < 8)  {
+					if(y-1 >= 0 && y < 4)  {
 							if (UnityEngine.Random.value < prob){								
 									if (my3DArr[x,z,y-1] == 1) my3DArr[x,z,y] = 1;								
 							}

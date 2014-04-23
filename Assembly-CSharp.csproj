@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Scripts\StartGameTest.cs" />
      <Compile Include="Assets\Scripts\Texturing\Texture2.cs" />
      <None Include="Assets\Level Files\Corners\CornersTR\corner0\cornerTR15.txt" />
      <None Include="Assets\Level Files\Interiors\interior4\interior8.txt" />
