@@ -34,12 +34,13 @@ public class CATerrainStartUp : MonoBehaviour {
 		myCA.buildWalls();
 		myCA.buildRoof();
 		myCA.optimiseCells();
+		//optimise floor here
 		
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {
 				for(int y = 20; y < height; y++) {
 					if(myCA.caveArr[x,z,y]==1 || y == 20) {
-						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, y*1.5f, z*1.5f), Quaternion.identity) as Transform;							
+						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, (y-20)*1.5f, z*1.5f), Quaternion.identity) as Transform;							
 						int m = myMesh.getMesh(x,z,y);
 						int rand = Random.Range(0,4);
 						cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
