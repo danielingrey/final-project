@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\InformationSheet.cs" />
      <Compile Include="Assets\Scripts\Level Generation\AdHoc.cs" />
      <Compile Include="Assets\Scripts\Level Generation\AdHocStartUp.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CA3D.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
      <Compile Include="Assets\Scripts\StartGameTest.cs" />
      <Compile Include="Assets\Scripts\Texturing\Texture2.cs" />
+     <Compile Include="Assets\Scripts\Texturing\Texture3.cs" />
      <None Include="Assets\Level Files\Corners\CornersTR\corner0\cornerTR15.txt" />
      <None Include="Assets\Level Files\Interiors\interior4\interior8.txt" />
      <None Include="Assets\Level Files\Interiors\interior1\interior9.txt" />

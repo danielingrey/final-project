@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 35f6a10aa43a31a4d8a3b3df37283600
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - infoSheet1: {fileID: 2800000, guid: 1ac228aebb655104d86f0197a122c5fa, type: 3}
+  - infoSheet2: {fileID: 2800000, guid: c36f2443f2c0e6f47bec4e3dc8a1c059, type: 3}
+  - infoSheet3: {fileID: 2800000, guid: 6b91a6cc5c0698c4f844051f842929a6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

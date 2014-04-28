@@ -20,10 +20,10 @@ public class CATerrainStartUp : MonoBehaviour {
 		floorLev = 13;//16
 		myCA = new CA3D(strtLev, roofLev, floorLev, length, height);
 		myMesh = new CreateMesh(length);
-		textrs = new string[4];
+		/*textrs = new string[4];
 		for (int i = 0; i < 4; i++) {
 			textrs[i] = "texture" + (i+1);
-		}
+		}*/
 		setup();
 	}
 	
@@ -43,7 +43,7 @@ public class CATerrainStartUp : MonoBehaviour {
 						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, (y-20)*1.5f, z*1.5f), Quaternion.identity) as Transform;							
 						int m = myMesh.getMesh(x,z,y);
 						int rand = Random.Range(0,4);
-						cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
+						//cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
 						cube.transform.parent = GameObject.FindGameObjectWithTag(myMesh.meshTags[m]).transform;
 					}	
 				}
