@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
      <Compile Include="Assets\Scripts\Level Generation\PNHeightMap.cs" />
      <Compile Include="Assets\Scripts\Level Generation\PerlinTerrainTest.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
      <Compile Include="Assets\Scripts\StartGameTest.cs" />
