@@ -1,9 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Level Files\Interiors\interior4\interior7.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level Generation\AdHocStartUp.cs">
     <Files>
-      <File FileName="Assets\Level Files\Interiors\interior4\interior7.txt" Line="6" Column="7" />
-      <File FileName="Assets\Level Files\Interiors\interior4\interior6.txt" Line="4" Column="3" />
+      <File FileName="Assets\Scripts\Level Generation\AdHocStartUp.cs" Line="45" Column="23" />
+      <File FileName="Assets\Scripts\PlayerStart\PlayerStartPos.cs" Line="79" Column="50" />
+      <File FileName="Assets\Scripts\Level Generation\StaticObjects.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\Level Generation\CAStartUp.cs" Line="12" Column="26" />
+      <File FileName="Assets\Scripts\Level Generation\CATerrainStartUp.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

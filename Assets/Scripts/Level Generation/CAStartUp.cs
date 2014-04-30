@@ -9,6 +9,7 @@ public class CAStartUp : MonoBehaviour {
 	int floorLev;
 	CreateMesh myMesh;
 	public Transform cubePrefab;
+	public Transform player;
 	//string[] textrs;
 	//public static int[,,] cave;
 	//public static bool built = false;
@@ -61,6 +62,7 @@ public class CAStartUp : MonoBehaviour {
 			
 		}
 
+		Instantiate(player);
 
 	}
 
