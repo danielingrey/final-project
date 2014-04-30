@@ -10,6 +10,8 @@ public class CATerrainStartUp : MonoBehaviour {
 	int floorLev;
 	CreateMesh myMesh;
 	public Transform cubePrefab;
+	public Transform player;
+
 	string[] textrs;
 	//public static int[,,] terrain;
 	//public static bool built = false;
@@ -69,6 +71,8 @@ public class CATerrainStartUp : MonoBehaviour {
 			}
 			
 		}
+
+		Instantiate(player);
 		
 		
 	}
@@ -76,6 +80,6 @@ public class CATerrainStartUp : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0)) Application.LoadLevel("CaveCA");
+		//if (Input.GetMouseButtonDown(0)) Application.LoadLevel("CaveCA");
 	}
 }

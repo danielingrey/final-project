@@ -27,7 +27,7 @@ public class CAStartUp : MonoBehaviour {
 				textrs[i] = "texture" + (i+1);
 			}*/
 			myCA.seed("random");
-			myCA.fillNextGen("cave", 5, strtLev);
+			myCA.fillNextGen("cave", 6, strtLev);
 			myCA.border();
 			myCA.buildWalls();
 			myCA.buildRoof();
@@ -67,7 +67,7 @@ public class CAStartUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0)) Application.LoadLevel("TerrainCA");
+		//if (Input.GetMouseButtonDown(0)) Application.LoadLevel("TerrainCA");
 	}
 
 }

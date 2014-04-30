@@ -59,11 +59,11 @@ public class AdHoc {
 		float prob;
 		string section = s;
 		if(section == "wall") {
-			prob = 0.45f;
+			prob = 0.05f;
 		} else if (section == "interior") {
-			prob = 0.33f;
+			prob = 0.2f;
 		} else {
-			prob = 0;
+			prob = 0f;
 		}
 		int rand = UnityEngine.Random.Range(0,3);
 		//for(int i = 0; i < rand; i++) {

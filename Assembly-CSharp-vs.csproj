@@ -55,10 +55,12 @@
      <Compile Include="Assets\Scripts\Level Generation\CATerrainStartUp.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CreateMesh.cs" />
      <Compile Include="Assets\Scripts\Level Generation\PNHeightMap.cs" />
+     <Compile Include="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs" />
      <Compile Include="Assets\Scripts\Level Generation\PerlinTerrainTest.cs" />
      <Compile Include="Assets\Scripts\Level Generation\StaticObjects.cs" />
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Scripts\PlayerStart\PlayerStartPos.cs" />
      <Compile Include="Assets\Scripts\StartGameTest.cs" />
      <Compile Include="Assets\Scripts\Texturing\Texture2.cs" />
      <Compile Include="Assets\Scripts\Texturing\Texture3.cs" />

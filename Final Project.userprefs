@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\StartGameTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs">
     <Files>
-      <File FileName="Assets\Scripts\StartGameTest.cs" Line="24" Column="24" />
-      <File FileName="Assets\Scripts\InformationSheet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Texturing\Texture2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Level Generation\CAStartUp.cs" Line="9" Column="15" />
-      <File FileName="Assets\Scripts\Level Generation\CATerrainStartUp.cs" Line="50" Column="4" />
-      <File FileName="Assets\Scripts\Level Generation\StaticObjects.cs" Line="8" Column="31" />
+      <File FileName="Assets\Scripts\PlayerStart\PlayerStartPos.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\Level Generation\CATerrainStartUp.cs" Line="75" Column="23" />
+      <File FileName="Assets\Scripts\Level Generation\StaticObjects.cs" Line="9" Column="40" />
+      <File FileName="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs" Line="31" Column="1" />
+      <File FileName="Assets\Scripts\StartGameTest.cs" Line="14" Column="26" />
+      <File FileName="Assets\Scripts\Meshes\MeshCombineUtility.cs" Line="177" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
