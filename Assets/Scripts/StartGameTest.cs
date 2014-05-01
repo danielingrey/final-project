@@ -42,7 +42,7 @@ public class StartGameTest : MonoBehaviour {
 				}
 			}
 		}
-
+		Resources.LoadAll("Level Files");
 		//levels = new string[] {"CaveCA", "CaveAdHoc"};
 		//int rand = Random.Range(0,2);
 		Application.LoadLevel("TerrainPN");
