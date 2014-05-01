@@ -5,7 +5,7 @@ public class AdHocStartUp : MonoBehaviour {
 	int sectLen; //section length
 	int caveLen  = 64; //cave length
 	int height = 16; //cave height
-	int sectNum; //number of sections
+	int sectNum = 64; //number of sections
 	AdHoc myAdHoc;
 	CreateMesh myMesh; 
 	public Transform cubePrefab;
@@ -16,8 +16,10 @@ public class AdHocStartUp : MonoBehaviour {
 		myMesh = new CreateMesh(sectNum);
 		if(!StaticObjects.cahBuilt){
 			sectLen = 8;
-			sectNum = 64;
 			myAdHoc = new AdHoc(sectLen, height, sectNum);
+			myAdHoc.placeCorners();
+			myAdHoc.placeWalls();
+			myAdHoc.placeInteriors();
 			StaticObjects.ahCave = myAdHoc.levelArr;
 			StaticObjects.cahBuilt = true;
 			//textures
@@ -26,9 +28,7 @@ public class AdHocStartUp : MonoBehaviour {
 	}
 	
 	void setup() {
-		myAdHoc.placeCorners();
-		myAdHoc.placeWalls();
-		myAdHoc.placeInteriors();
+
 
 		for(int x = 0; x < caveLen; x++) {				
 			for( int z = 0; z < caveLen; z++) {
@@ -43,5 +43,9 @@ public class AdHocStartUp : MonoBehaviour {
 			
 		}
 		Instantiate(player);
+	}
+
+	void Update(){
+		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("TerrainCA");
 	}
 }

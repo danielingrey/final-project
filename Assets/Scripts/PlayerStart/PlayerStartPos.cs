@@ -13,13 +13,13 @@ public class PlayerStartPos : MonoBehaviour {
 			int i = StaticObjects.terrain.GetLength(2)-1;
 			Debug.Log(i);
 			while(!placed && i > 1) {
-				Debug.Log(i-20);
+				//Debug.Log(i-20);
 				if(StaticObjects.terrain[20,20,i] == 1) {
-					Debug.Log(StaticObjects.terrain[20,20,i]);
+					//Debug.Log(StaticObjects.terrain[20,20,i]);
 					//Debug.Log((i-20)*1.5f);
-					Debug.Log((i-20)*1.5f+1.23f);
+					//Debug.Log((i-20)*1.5f+1.23f);
 					placed = true;
-					Debug.Log(placed);
+					//Debug.Log(placed);
 					//Debug.Log(Math.Floor(i/1.75f)+0.5f);
 					//transform.position = new Vector3(30f,(float)Math.Floor(i/1.75f)+0.5f, 30f);
 					
@@ -35,10 +35,10 @@ public class PlayerStartPos : MonoBehaviour {
 			int length = StaticObjects.cave.GetLength(0)-1;
 			int height = StaticObjects.cave.GetLength(2)-1;
 
-			int x = 14;
-			int z = 14;
+			int x = 20;
+			int z = 20;
 			//Debug.Log("outside while");
-			while(!placed && z < length/3) {
+			while(!placed && z < length-20) {
 
 			//for(int i = 10; i < length/3; i++) {
 				//for(int j = 10; j < length/3; j++) {
@@ -66,10 +66,10 @@ public class PlayerStartPos : MonoBehaviour {
 							transform.position = new Vector3(x*1.5f,y1*1.5f+1.23f, z*1.5f);
 						}
 					}
-				if (x < length/3) {
+				if (x < length-20) {
 					x++;
 				} else {
-					x = 14;
+					x = 20;
 					z++;
 				}
 				//}

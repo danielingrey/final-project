@@ -15,8 +15,9 @@ public class PNHeightMap {
 	public void perlHghtMap(float xo, float yo){
 	float xoff = xo;
 	float yoff = yo;
-	float x = 0.0f;
-	float y = 0.0f;
+	float x = UnityEngine.Random.value;
+	//float x = 0.0f;
+	float y = x;
 	float hm;
 		//Debug.Log ("this works");
 		for(int i = 0; i < length; i++){

@@ -31,4 +31,7 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 		Instantiate(player);
 	}
 
+	void Update(){
+		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("CaveAdHoc");
+	}
 }

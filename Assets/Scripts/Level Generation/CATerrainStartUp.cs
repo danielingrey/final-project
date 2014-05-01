@@ -63,7 +63,7 @@ public class CATerrainStartUp : MonoBehaviour {
 					if(StaticObjects.terrain[x,z,y]==1 || y == 20) {
 						Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, (y-20)*1.5f, z*1.5f), Quaternion.identity) as Transform;							
 						int m = myMesh.getMesh(x,z,y);
-						int rand = Random.Range(0,4);
+						//int rand = Random.Range(0,4);
 						//cube.renderer.material = GameObject.FindGameObjectWithTag(textrs[rand]).renderer.material;
 						cube.transform.parent = GameObject.FindGameObjectWithTag(myMesh.meshTags[m]).transform;
 					}	
@@ -80,6 +80,6 @@ public class CATerrainStartUp : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//if (Input.GetMouseButtonDown(0)) Application.LoadLevel("CaveCA");
+		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("CaveCA");
 	}
 }

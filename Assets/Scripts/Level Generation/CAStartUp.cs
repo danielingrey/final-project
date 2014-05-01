@@ -69,6 +69,8 @@ public class CAStartUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("startSceneTest");
+
 		//if (Input.GetMouseButtonDown(0)) Application.LoadLevel("TerrainCA");
 	}
 
