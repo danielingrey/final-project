@@ -8,14 +8,13 @@ public class AdHoc {
 	int length; //section length
 	int height; //section height
 	int sectNum; //number of sections
-	StreamReader file;
+	//StreamReader file;
 	string line;
 
 	string longLine;
 	string[] splitLines; 
 
 	string[] lines = new string[8];
-	string path;
 	int[,,] my3DArr;
 
 	TextAsset[] sects = new TextAsset[16];
@@ -28,7 +27,6 @@ public class AdHoc {
 		lines = new string[length];
 		my3DArr = new int[length,length,height];
 		levelArr = new int[sectNum,sectNum,height];
-		path = Directory.GetCurrentDirectory();
 	}
 
 	void placeSection(int i, int j) {

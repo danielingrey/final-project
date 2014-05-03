@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: b94cb62d7b6ebea42a669b3ebd602d1a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - thrust: {fileID: 8300000, guid: 9a70de78ebf6c4649bf1029b83bdc15e, type: 3}
+  - release: {fileID: 8300000, guid: 75c661c1b3ed9aa4b8dd5ffc2d6c8f01, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

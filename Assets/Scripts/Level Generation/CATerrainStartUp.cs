@@ -17,10 +17,10 @@ public class CATerrainStartUp : MonoBehaviour {
 	//public static bool built = false;
 
 	void Start() {
-		Debug.Log (StaticObjects.terrainBuilt);
+		//Debug.Log (StaticObjects.terrainBuilt);
 		myMesh = new CreateMesh(length);
 		if(!StaticObjects.terrainBuilt){
-			Debug.Log (StaticObjects.terrainBuilt);
+			//Debug.Log (StaticObjects.terrainBuilt);
 			strtLev = 20;//20
 			roofLev = 30;//26
 			floorLev = 13;//16
@@ -50,7 +50,7 @@ public class CATerrainStartUp : MonoBehaviour {
 
 			StaticObjects.terrainBuilt = true;
 		}
-		Debug.Log (StaticObjects.terrainBuilt);
+		//Debug.Log (StaticObjects.terrainBuilt);
 		setup();
 	}
 	

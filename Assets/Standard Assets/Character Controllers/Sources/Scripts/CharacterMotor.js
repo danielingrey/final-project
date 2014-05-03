@@ -3,7 +3,7 @@
 #pragma downcast
 
 // Does this script currently respond to input?
-var canControl : boolean = true;
+public var canControl : boolean = true;
 
 var useFixedUpdate : boolean = true;
 
@@ -557,6 +557,7 @@ function TooSteep () {
 function GetDirection () {
 	return inputMoveDirection;
 }
+
 
 function SetControllable (controllable : boolean) {
 	canControl = controllable;
