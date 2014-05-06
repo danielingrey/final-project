@@ -13,16 +13,15 @@ public class PlayerParticleEffect : MonoBehaviour {
 
 
 	IEnumerator Start () {
-		print (start);
+
 		curX = transform.parent.position.x;
 		curZ = transform.parent.position.z;
 		controller = transform.parent.GetComponent<CharacterController>();
-		print (start);
+
 
 		yield return new WaitForSeconds(1);
 
 		start = true;
-		print (start);
 		particleSystem.enableEmission = false;
 		particleSystem.Play();
 		//CharacterMotor motorScript = transform.parent.GetComponent<CharacterMotor>();
@@ -54,8 +53,6 @@ public class PlayerParticleEffect : MonoBehaviour {
 			}*/
 			curX = transform.parent.position.x;
 			curZ = transform.parent.position.z;	
-			print (particleSystem.enableEmission);
-			print(transform.parent.position.x);
 		}
 	}
 }

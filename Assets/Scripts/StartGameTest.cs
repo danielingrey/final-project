@@ -3,10 +3,11 @@ using System.Collections;
 
 public class StartGameTest : MonoBehaviour {
 	//string[] levels;
-
+	float countdown = 5.0f;
 
 	// Use this for initialization
 	void Start () {
+		Screen.showCursor = false;
 		StaticObjects.terrainBuilt = false;
 		StaticObjects.caveBuilt = false;
 		StaticObjects.pnTBuilt = false;
@@ -15,6 +16,7 @@ public class StartGameTest : MonoBehaviour {
 		StaticObjects.pnTerrain = new int[128,128];
 		StaticObjects.cave = new int[64,64,60];
 		StaticObjects.ahCave = new int[64,64,16];
+
 
 		for(int x = 0; x < 128; x++) {
 			for(int z = 0; z < 128; z++) {
@@ -43,13 +45,15 @@ public class StartGameTest : MonoBehaviour {
 			}
 		}
 		Resources.LoadAll("Level Files");
-		//levels = new string[] {"CaveCA", "CaveAdHoc"};
-		//int rand = Random.Range(0,2);
-		Application.LoadLevel("TerrainPN");
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		countdown -= Time.deltaTime;
+		if(countdown < 0.0f && Input.anyKeyDown) {
+			Application.LoadLevel("TerrainPN");
+		}
 	}
 }
