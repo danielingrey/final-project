@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerSounds.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerParticleEffect.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\PlayerSounds.cs" Line="36" Column="3" />
-      <File FileName="Assets\Scripts\Level Generation\AdHocStartUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\PlayerParticleEffect.cs" Line="25" Column="30" />
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\CharacterMotor.js" Line="292" Column="18" />
-      <File FileName="Assets\Scripts\Player\PlayerStartPos.cs" Line="35" Column="6" />
+      <File FileName="Assets\Scripts\Player\PlayerParticleEffect.cs" Line="12" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
