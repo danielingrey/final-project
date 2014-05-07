@@ -8,8 +8,10 @@ public class AdHocStartUp : MonoBehaviour {
 	int sectNum = 64; //number of sections
 	AdHoc myAdHoc;
 	CreateMesh myMesh; 
+	bool canCoRoutine = true;
 	public Transform cubePrefab;
 	public Transform player;
+	public GUITexture teleport;
 
 	// Use this for initialization
 	void Start () {
@@ -43,9 +45,25 @@ public class AdHocStartUp : MonoBehaviour {
 			
 		}
 		Instantiate(player);
+		audio.Play();
 	}
 
 	void Update(){
-		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("TerrainCA");
+		if (Input.GetKeyDown(KeyCode.T) && canCoRoutine) {
+			StartCoroutine(waitForSound());
+		}
+		if (!canCoRoutine) {
+			Instantiate(teleport);
+			teleport.transform.localScale += new Vector3(0.01f, 0.01f, 0);
+		}
+	}
+	
+	IEnumerator waitForSound() {
+
+		canCoRoutine = false;
+		yield return new WaitForSeconds(3.0f);
+
+		Application.LoadLevel("TerrainCA");
+		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

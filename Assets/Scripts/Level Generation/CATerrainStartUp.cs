@@ -9,8 +9,10 @@ public class CATerrainStartUp : MonoBehaviour {
 	int roofLev;
 	int floorLev;
 	CreateMesh myMesh;
+	bool canCoRoutine = true;
 	public Transform cubePrefab;
 	public Transform player;
+	public GUITexture teleport;
 
 	string[] textrs;
 	//public static int[,,] terrain;
@@ -73,13 +75,28 @@ public class CATerrainStartUp : MonoBehaviour {
 		}
 
 		Instantiate(player);
-		
+		audio.Play();
 		
 	}
 	
 
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("CaveCA");
+	void Update(){
+		if (Input.GetKeyDown(KeyCode.T) && canCoRoutine) {
+			StartCoroutine(waitForSound());
+		}
+		if (!canCoRoutine) {
+			Instantiate(teleport);
+			teleport.transform.localScale += new Vector3(0.01f, 0.01f, 0);
+		}
+	}
+	
+	IEnumerator waitForSound() {
+
+		canCoRoutine = false;
+		yield return new WaitForSeconds(3.0f);
+
+		Application.LoadLevel("CaveCA");
+		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

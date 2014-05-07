@@ -3,9 +3,12 @@ using System.Collections;
 
 public class PerlinTerrainStartUp : MonoBehaviour {
 	int length = 128;
-//	int height = 60;
+	//int height = 60;
 	public Transform cubePrefab;
 	public Transform player;
+	bool canCoRoutine = true;
+	public GUITexture teleport;
+
 	CreateMesh myMesh;
 
 	// Use this for initialization
@@ -13,7 +16,7 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 		myMesh = new CreateMesh(128);
 		if(!StaticObjects.pnTBuilt){
 			PNHeightMap myHM = new PNHeightMap(128);
-			myHM.perlHghtMap(0.06f,0.06f);
+			myHM.perlHghtMap(0.05f,0.05f);
 			StaticObjects.pnTerrain = myHM.arr2D;
 			StaticObjects.pnTBuilt = true;
 		}
@@ -29,9 +32,26 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 			}	
 		}
 		Instantiate(player);
+		audio.Play();
 	}
 
 	void Update(){
-		if (Input.GetKey(KeyCode.T)) Application.LoadLevel("CaveAdHoc");
+		if (Input.GetKeyDown(KeyCode.T) && canCoRoutine) {
+			StartCoroutine(waitForSound());
+		}
+		if (!canCoRoutine) {
+			Instantiate(teleport);
+			teleport.transform.localScale += new Vector3(0.01f, 0.01f, 0);
+		}
 	}
+
+	IEnumerator waitForSound() {
+
+		canCoRoutine = false;
+		yield return new WaitForSeconds(3.0f);
+
+		Application.LoadLevel("CaveAdHoc");
+		teleport.transform.localScale = new Vector3(2, 2, 1);
+	}
+
 }

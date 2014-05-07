@@ -13,7 +13,7 @@ public class PlayerStartPos : MonoBehaviour {
 		if(Application.loadedLevelName == "TerrainCA"){
 			int i = StaticObjects.terrain.GetLength(2)-1;
 			//Debug.Log(i);
-			while(!placed && i > 1) {
+			while(!placed && i > 0) {
 				//Debug.Log(i-20);
 				if(StaticObjects.terrain[20,20,i] == 1) {
 					//Debug.Log(StaticObjects.terrain[20,20,i]);
@@ -28,12 +28,16 @@ public class PlayerStartPos : MonoBehaviour {
 				}
 				i--;
 			}
-			if(i == 0) transform.position = new Vector3(30f,1.23f, 30f);
-			//print(Application.loadedLevelName);
+			if(i == 0) transform.position = new Vector3(30f,startOff, 30f);
+
 		} else if(Application.loadedLevelName == "TerrainPN") {
 			//Debug.Log (StaticObjects.pnTerrain[20,20]*1.5f+1.08f);
 			//Debug.Log (StaticObjects.pnTerrain[20,20]*1.5f+1.23f);
-			transform.position = new Vector3(30f,StaticObjects.pnTerrain[20,20]*1.5f+startOff, 30f);
+			if(StaticObjects.pnTerrain[20,20] == 0) {
+				transform.position = new Vector3(30f,startOff, 30f);
+			}else {
+				transform.position = new Vector3(30f,StaticObjects.pnTerrain[20,20]*1.5f+startOff, 30f);
+			}
 		} else if(Application.loadedLevelName == "CaveCA") {
 			int length = StaticObjects.cave.GetLength(0)-1;
 			int height = StaticObjects.cave.GetLength(2)-1;

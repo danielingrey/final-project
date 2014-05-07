@@ -25,8 +25,6 @@ public class FadeIn : MonoBehaviour {
 			count++;
 			countdown = 0.08f;
 		}
-		if(count == 250) {
 
-		}
 	}
 }
