@@ -47,14 +47,16 @@ public class StartGameTest : MonoBehaviour {
 		}
 		Resources.LoadAll("Level Files");
 
-
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		countdown -= Time.deltaTime;
 		if(countdown < 0.0f && Input.anyKeyDown) {
-			Application.LoadLevel("TerrainPN");
+			//Application.LoadLevel("TerrainPN");
+			Application.LoadLevel(1);
 		}
+
 	}
 }

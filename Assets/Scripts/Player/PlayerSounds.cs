@@ -7,7 +7,7 @@ public class PlayerSounds : MonoBehaviour {
 	public AudioClip thrust;
 	public AudioClip release;
 	bool replay = false;
-	float velocity = 0f;
+	//float velocity = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class PlayerSounds : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float endPlay = 0;
+		//float endPlay = 0;
 		CharacterController controller = transform.GetComponent<CharacterController>();
 		Debug.Log (controller.velocity.y);
 		if (Input.GetKeyDown("space") && controller.isGrounded) {

@@ -50,7 +50,8 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 		canCoRoutine = false;
 		yield return new WaitForSeconds(3.0f);
 
-		Application.LoadLevel("CaveAdHoc");
+		Application.LoadLevel(2);
+		//Application.LoadLevel(4);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 

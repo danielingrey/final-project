@@ -86,7 +86,9 @@ public class CAStartUp : MonoBehaviour {
 		yield return new WaitForSeconds(3.0f);
 		;
 		//teleport.transform.localScale = new Vector3(1, 1, 1);
-		Application.LoadLevel("EndOfGame");
-
+		//Application.LoadLevel("EndOfGame");
+		Application.LoadLevel(5);
+		//Application.LoadLevel(3);
+		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

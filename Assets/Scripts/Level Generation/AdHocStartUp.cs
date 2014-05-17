@@ -63,7 +63,8 @@ public class AdHocStartUp : MonoBehaviour {
 		canCoRoutine = false;
 		yield return new WaitForSeconds(3.0f);
 
-		Application.LoadLevel("TerrainCA");
+		Application.LoadLevel(3);
+		//Application.LoadLevel(5);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }
