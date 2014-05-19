@@ -16,7 +16,7 @@ public class TextBehaviour : MonoBehaviour {
 		countdown -= Time.deltaTime;
 
 		if(countdown < 0.0f && title == 1) {
-			guiText.text = "A game by Daniel Ingrey";
+			guiText.text = "A study in procededural\ngeneration by Daniel Ingrey";
 			countdown = 4.0f;
 			title = 2;
 		} else if(countdown < 0.0f && title == 2) {

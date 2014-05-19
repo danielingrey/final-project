@@ -49,10 +49,8 @@
      <Compile Include="Assets\Scripts\Controls.cs" />
      <Compile Include="Assets\Scripts\ControlsBG.cs" />
      <Compile Include="Assets\Scripts\FadeIn.cs" />
-     <Compile Include="Assets\Scripts\InformationSheet.cs" />
      <Compile Include="Assets\Scripts\Level Generation\AdHoc.cs" />
      <Compile Include="Assets\Scripts\Level Generation\AdHocStartUp.cs" />
-     <Compile Include="Assets\Scripts\Level Generation\AdHocWeb.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CA3D.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CAGens.cs" />
      <Compile Include="Assets\Scripts\Level Generation\CAStartUp.cs" />
@@ -65,6 +63,7 @@
      <Compile Include="Assets\Scripts\Meshes\CombineChildren.cs" />
      <Compile Include="Assets\Scripts\Meshes\MeshCombineUtility.cs" />
      <Compile Include="Assets\Scripts\MoveLight.cs" />
+     <Compile Include="Assets\Scripts\OnScreenInfo.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerParticleEffect.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerSounds.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStartPos.cs" />

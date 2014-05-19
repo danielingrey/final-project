@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Diagnostics;
 
 public class AdHocStartUp : MonoBehaviour {
 	int sectLen; //section length
@@ -15,6 +17,8 @@ public class AdHocStartUp : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Stopwatch stopWatch = new Stopwatch();
+		stopWatch.Start();
 		myMesh = new CreateMesh(sectNum);
 		if(!StaticObjects.cahBuilt){
 			sectLen = 8;
@@ -27,6 +31,9 @@ public class AdHocStartUp : MonoBehaviour {
 			//textures
 		}
 		setup();
+		stopWatch.Stop();
+		TimeSpan ts = stopWatch.Elapsed;
+		print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 	
 	void setup() {
@@ -63,7 +70,8 @@ public class AdHocStartUp : MonoBehaviour {
 		canCoRoutine = false;
 		yield return new WaitForSeconds(3.0f);
 
-		Application.LoadLevel("TerrainCA");
+		Application.LoadLevel(3);
+		//Application.LoadLevel(5);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

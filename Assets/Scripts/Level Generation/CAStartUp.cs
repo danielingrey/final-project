@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Diagnostics;
 
 public class CAStartUp : MonoBehaviour {
 	int length = 64;
@@ -17,6 +19,8 @@ public class CAStartUp : MonoBehaviour {
 	//public static bool built = false;
 
 	void Start() {
+		Stopwatch stopWatch = new Stopwatch();
+		stopWatch.Start();
 		myMesh = new CreateMesh(length);
 		if(!StaticObjects.caveBuilt){
 
@@ -39,6 +43,9 @@ public class CAStartUp : MonoBehaviour {
 			StaticObjects.caveBuilt = true;
 		}
 		setup();
+		stopWatch.Stop();
+		TimeSpan ts = stopWatch.Elapsed;
+		print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 
 	void setup() {
@@ -86,7 +93,9 @@ public class CAStartUp : MonoBehaviour {
 		yield return new WaitForSeconds(3.0f);
 		;
 		//teleport.transform.localScale = new Vector3(1, 1, 1);
-		Application.LoadLevel("EndOfGame");
-
+		//Application.LoadLevel("EndOfGame");
+		Application.LoadLevel(5);
+		//Application.LoadLevel(3);
+		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

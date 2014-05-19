@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Diagnostics;
 
 
 public class CATerrainStartUp : MonoBehaviour {
@@ -14,31 +16,25 @@ public class CATerrainStartUp : MonoBehaviour {
 	public Transform player;
 	public GUITexture teleport;
 
-	string[] textrs;
-	//public static int[,,] terrain;
-	//public static bool built = false;
-
 	void Start() {
-		//Debug.Log (StaticObjects.terrainBuilt);
+		Stopwatch stopWatch = new Stopwatch();
+		stopWatch.Start();
+
 		myMesh = new CreateMesh(length);
 		if(!StaticObjects.terrainBuilt){
-			//Debug.Log (StaticObjects.terrainBuilt);
 			strtLev = 20;//20
 			roofLev = 30;//26
 			floorLev = 13;//16
 			CA3D myCA = new CA3D(strtLev, roofLev, floorLev, length, height);
 
-			/*textrs = new string[4];
-			for (int i = 0; i < 4; i++) {
-				textrs[i] = "texture" + (i+1);
-			}*/
+		
 			myCA.seed("random");
 			myCA.fillNextGen("cave", 5, strtLev);
 			myCA.border();
 			myCA.buildWalls();
 			myCA.buildRoof();
 			myCA.optimiseCells();
-			//optimise floor here?
+
 			StaticObjects.terrain = myCA.caveArr;
 			//StaticObjects.terrain = (int[,,])myCA.caveArr.Clone();
 			//System.Array.Copy(myCA.caveArr,StaticObjects.terrain, 128*128*60);
@@ -54,6 +50,9 @@ public class CATerrainStartUp : MonoBehaviour {
 		}
 		//Debug.Log (StaticObjects.terrainBuilt);
 		setup();
+		stopWatch.Stop();
+		TimeSpan ts = stopWatch.Elapsed;
+		print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 	
 	void setup() {
@@ -96,7 +95,9 @@ public class CATerrainStartUp : MonoBehaviour {
 		canCoRoutine = false;
 		yield return new WaitForSeconds(3.0f);
 
-		Application.LoadLevel("CaveCA");
+		//Application.LoadLevel("CaveCA");
+		Application.LoadLevel(4);
+		//Application.LoadLevel(2);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}
 }

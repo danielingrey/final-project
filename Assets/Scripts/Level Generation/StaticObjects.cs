@@ -11,4 +11,6 @@ public static class StaticObjects {
 	public static bool caveBuilt {get;set;}
 	public static bool cahBuilt {get;set;}
 	public static float teleLength {get;set;}
+
+
 }

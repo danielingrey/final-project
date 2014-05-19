@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Level Generation\CAStartUp.cs">
     <Files>
-      <File FileName="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs" Line="19" Column="31" />
+      <File FileName="Assets\Scripts\Level Generation\AdHocStartUp.cs" Line="36" Column="3" />
+      <File FileName="Assets\Scripts\Level Generation\CAStartUp.cs" Line="23" Column="21" />
+      <File FileName="Assets\Scripts\Level Generation\CATerrainStartUp.cs" Line="55" Column="48" />
+      <File FileName="Assets\Scripts\Level Generation\PerlinTerrainStartUp.cs" Line="30" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
