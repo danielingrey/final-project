@@ -1,8 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// CA gens.
+/// </summary>
 public class CAGens {
+	/// <summary>
+	/// Gets or sets the current gen.
+	/// </summary>
+	/// <value>The current gen.</value>
 	public int[,] currentGen{get;set;} // 2D representation of the current generation
+	/// <summary>
+	/// The next gen.
+	/// </summary>
 	public int[,] nextGen; // 2D representation of the next generation 
 	int border; // creates a border to give cells room to grow within the array
 	int length;

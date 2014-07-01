@@ -61,7 +61,7 @@ public class Controls : MonoBehaviour {
 		if(Application.loadedLevel != 5) {
 		   if(Input.GetKeyDown(KeyCode.H)) {
 			guiText.enabled = !guiText.enabled;
-			}		
+			}
 		}
 	}
 

@@ -3,23 +3,56 @@ using System.Collections;
 using System.IO;
 using System;
 
+/// <summary>
+/// Ad hoc.
+/// </summary>
 public class AdHoc {
+	/// <summary>
+	/// Gets or sets the level array.
+	/// </summary>
+	/// <value>The level array</value>
 	public int[,,] levelArr {get;set;}
-	int length; //section length
-	int height; //section height
-	int sectNum; //number of sections
+	/// <summary>
+	/// The section array.
+	/// </summary>
+	private int[,,] my3DArr;
+	/// <summary>
+	/// The length and depth of a section.
+	/// </summary>
+	private int length;
+	/// <summary>
+	/// The height of the arrays.
+	/// </summary>
+	private int height;
+	/// <summary>
+	/// The number of sections.
+	/// </summary>
+	private int sectNum;
 	//StreamReader file;
-	string line;
+	/// <summary>
+	/// Current line of text read from file.
+	/// </summary>
+	private string line;
+	/// <summary>
+	/// Copy of the whole textfile.
+	/// </summary>
+	private string longLine;
+	//private string[] splitLines;
+	/// <summary>
+	/// Array holding each line of text.
+	/// </summary>
+	private string[] lines;
+	/// <summary>
+	/// Textfiles are loaded as TextAssets for conversion to string.
+	/// </summary>
+	private TextAsset[] sects = new TextAsset[16];
 
-	string longLine;
-	string[] splitLines; 
-
-	string[] lines = new string[8];
-	int[,,] my3DArr;
-
-	TextAsset[] sects = new TextAsset[16];
-
-
+	/// <summary>
+	/// Initializes a new instance of the <see cref="AdHoc"/> class.
+	/// </summary>
+	/// <param name="l">The section length and depth.</param>
+	/// <param name="h">The height of the arrays.</param>
+	/// <param name="sn">The number of sections</param>
 	public AdHoc(int l, int h, int sn) {
 		length = l;
 		height = h;
@@ -29,8 +62,12 @@ public class AdHoc {
 		levelArr = new int[sectNum,sectNum,height];
 	}
 
-	void placeSection(int i, int j) {
-		
+	/// <summary>
+	/// Places a section within the level array.
+	/// </summary>
+	/// <param name="i">The first start index.</param>
+	/// <param name="j">The second start index.</param>
+	private void placeSection(int i, int j) {		
 		for(int x = 0; x < 8; x++) {				
 			for( int z = 0; z < 8; z++) {
 				for(int y = 0; y < 16; y++) {
@@ -52,7 +89,11 @@ public class AdHoc {
 
 	}*/
 
-	void getSection(string s) {
+	/// <summary>
+	/// Gets a section.
+	/// </summary>
+	/// <param name="s">String of datapath to a section folder.</param>
+	private void getSection(string s) {
 		//my3DArr = new int[8,8,16];
 		for(int i = 0; i < 16; i++) {
 			//sects[i] = (TextAsset)Resources.Load(@"Level Files/Corners/CornersTL/corner0/cornerTL" + i, typeof(TextAsset));
@@ -102,7 +143,11 @@ public class AdHoc {
 		}
 	}*/
 
-	void randomiseSection(string s) {
+	/// <summary>
+	/// Adds probabalistic randomisation to a section.
+	/// </summary>
+	/// <param name="s">Type of section.</param>
+	private void randomiseSection(string s) {
 		float prob;
 		string section = s;
 		if(section == "wall") {
@@ -134,7 +179,10 @@ public class AdHoc {
 			}
 		//}
 	}
-	
+
+	/// <summary>
+	/// Places the corner sections.
+	/// </summary>
 	public void placeCorners() {
 		//Top left
 		getSection(@"Level Files/Corners/CornersTL/corner0/cornerTL");
@@ -155,7 +203,10 @@ public class AdHoc {
 		getSection (@"Level Files/Corners/CornersBR/corner0/cornerBR");
 		placeSection(7,7);
 	}
-	
+
+	/// <summary>
+	/// Places the wall sections.
+	/// </summary>
 	public void placeWalls() {
 		string section = "wall";
 		//top
@@ -187,7 +238,10 @@ public class AdHoc {
 			placeSection(i,0);
 		}
 	}
-	
+
+	/// <summary>
+	/// Places the interior sections.
+	/// </summary>
 	public void placeInteriors() {
 		string section = "interior";
 		for (int i = 1; i < 7; i++) {

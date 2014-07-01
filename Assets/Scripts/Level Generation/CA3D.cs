@@ -1,17 +1,56 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// CA3D.
+/// </summary>
 public class CA3D {
+	/// <summary>
+	/// The current generation.
+	/// </summary>
 	CAGens generation;
+	/// <summary>
+	/// Gets or sets the level array.
+	/// </summary>
+	/// <value>The level array.</value>
 	public int[,,] caveArr{get;set;}
-	int seedLevel; // the y coordinate of the level for seeding the initial generation
-	int startRoof; // the y coordinate of the level to begin running the roof create CA
-	int startFloor;
-	int nextGen;
-	int length;
-	int height;
-	int bord; //border size
+	/// <summary>
+	/// The y coordinate of the level for seeding the initial generation.
+	/// </summary>
+	private int seedLevel;
+	/// <summary>
+	/// The y coordinate of the level array to begin running the create roof CA.
+	/// </summary>
+	private int startRoof;
+	/// <summary>
+	/// The y coordinate of the level array to begin running the create floor CA.
+	/// </summary>
+	private int startFloor;
+	/// <summary>
+	/// The next generation.
+	/// </summary>
+	private int nextGen;
+	/// <summary>
+	/// The length and depth of the level array.
+	/// </summary>
+	private int length;
+	/// <summary>
+	/// The height of the level array.
+	/// </summary>
+	private int height;
+	/// <summary>
+	/// The border size.
+	/// </summary>
+	private int bord;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="CA3D"/> class.
+	/// </summary>
+	/// <param name="sl">Sets the seedLevel.</param>
+	/// <param name="sr">Sets startRoof.</param>
+	/// <param name="sf">Sets startFloor.</param>
+	/// <param name="l">The length and depth of the level array.</param>
+	/// <param name="h">The height of the level array.</param>
 	public CA3D(int sl, int sr, int sf, int l, int h) {
 		length = l;
 		height = h;
@@ -31,6 +70,10 @@ public class CA3D {
 		generation = new CAGens(length, bord);
 	}
 
+	/// <summary>
+	/// Creates a seed generation.
+	/// </summary>
+	/// <param name="s">Type of seed.</param>
 	public void seed(string s) {
 		generation.seedCA(s,0.45f);
 		/*for(int x = 0; x < length; x++){
@@ -40,9 +83,12 @@ public class CA3D {
 		}*/
 	}
 
-	/* accepts string to specify CA rule, how many iterations to apply that rule to the selected 2d grid and which
-	 * row to put it in to in the 3d array
-	 */
+	/// <summary>
+	/// Fills the next generation in the array.
+	/// </summary>
+	/// <param name="s">Specifies CA rule.</param>
+	/// <param name="it">Number of iterations to apply rule to current 2D generation.</param>
+	/// <param name="ng">Level in array to place result.</param>
 	public void fillNextGen(string s, int it, int ng) {
 		string rule = s;
 		int iterateNum = it;
@@ -53,6 +99,9 @@ public class CA3D {
 		fillArray();
 	}
 
+	/// <summary>
+	/// Builds the walls.
+	/// </summary>
 	public void buildWalls() {
 		string[] ruleArr = {"two","three"};
 		int b = 1;
@@ -89,6 +138,11 @@ public class CA3D {
 		}
 	}
 
+	/// <summary>
+	/// Performs a bit flip operation.
+	/// </summary>
+	/// <returns>The flipped bit.</returns>
+	/// <param name="bf">Bit to flip.</param>
 	public int bitFlip(int bf) {
 		int b = bf;
 		if((b&1) == 1) {
@@ -99,6 +153,9 @@ public class CA3D {
 		return b;
 	}
 
+	/// <summary>
+	/// Builds the roof.
+	/// </summary>
 	public void buildRoof() {
 		nextGen = startRoof;
 		for(int x = 0; x < length; x++){
@@ -112,11 +169,17 @@ public class CA3D {
 
 	}
 
+	/// <summary>
+	/// Border the current 2D generation.
+	/// </summary>
 	public void border() {
 		generation.createBorder();
 		fillArray();
 	}
 
+	/// <summary>
+	/// Copies the current 2D generation in to the 3D array at position nextGen.
+	/// </summary>
 	public void fillArray() {
 		for(int x = 0; x < length; x++){
 			for(int z = 0; z < length; z++) {
@@ -126,6 +189,9 @@ public class CA3D {
 		}
 	}
 
+	/// <summary>
+	/// Optimises the cells.
+	/// </summary>
 	public void optimiseCells() {
 
 
@@ -163,9 +229,9 @@ public class CA3D {
 
 	}
 
-	/*
-	 * trims the edges of the level
-	 */
+	/// <summary>
+	/// Trims the cells.
+	/// </summary>
 	public void trimCells() {
 		/*int cut = c;
 		int xNum = 0;

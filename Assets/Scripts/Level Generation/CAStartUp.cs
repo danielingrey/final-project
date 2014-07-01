@@ -4,8 +4,8 @@ using System;
 using System.Diagnostics;
 
 public class CAStartUp : MonoBehaviour {
-	int length = 64;
-	int height = 60;
+	int length = 128;
+	int height = 100;
 	int strtLev;
 	int roofLev;
 	int floorLev;
@@ -25,8 +25,8 @@ public class CAStartUp : MonoBehaviour {
 		if(!StaticObjects.caveBuilt){
 
 			strtLev = 20;//20
-			roofLev = 30;//26
-			floorLev = 13;//16
+			roofLev = 26;//26
+			floorLev = 16;//16
 			CA3D myCA = new CA3D(strtLev, roofLev, floorLev, length, height);
 
 			/*textrs = new string[4];
@@ -80,6 +80,10 @@ public class CAStartUp : MonoBehaviour {
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.T) && canCoRoutine) {
 			StartCoroutine(waitForSound());
+		}
+		if(Input.GetKeyDown(KeyCode.P)) {
+			StaticObjects.caveBuilt = !StaticObjects.caveBuilt;
+			Application.LoadLevel(Application.loadedLevel);
 		}
 		if (!canCoRoutine) {
 			Instantiate(teleport);
