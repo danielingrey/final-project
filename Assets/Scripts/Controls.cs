@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Controls. Displays GUI text on screen for the player on how to play.
+/// </summary>
 public class Controls : MonoBehaviour {
 
-	// Use this for initialization
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
 		string next = "next level";
 		string controls = "<size=27>Notes/Reminder before you begin:</size>" +
@@ -57,10 +62,12 @@ public class Controls : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	void Update () {
-		if(Application.loadedLevel != 5) {
-		   if(Input.GetKeyDown(KeyCode.H)) {
+		if(Application.loadedLevel != 5) { //check player is inside a level
+		   if(Input.GetKeyDown(KeyCode.H)) { //display/remove text if the player presses 'h' key
 			guiText.enabled = !guiText.enabled;
 			}
 		}

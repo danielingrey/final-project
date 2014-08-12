@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Created when initial plans for the project included backtracking between levels without them being recreated as static objects are not destroyed between scene transitions.
+/// Created when initial plans for the project included backtracking between levels. Static objects are not destroyed between scene transitions so these variables "save" pre built levels.
 /// <para>Levels are held as static 3D integer arrays of 0s and 1s.</para>
 /// </summary>
 public static class StaticObjects {
@@ -46,9 +46,4 @@ public static class StaticObjects {
 	/// </summary>
 	/// <value><c>true</c> if ad-hoc cave built; otherwise, <c>false</c>.</value>
 	public static bool cahBuilt {get;set;}
-	/// <summary>
-	/// Gets or sets the length of the tele.
-	/// </summary>
-	/// <value>The length of the tele.</value>
-	//public static float teleLength {get;set;}
 }

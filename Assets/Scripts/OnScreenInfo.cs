@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Displays information on screen within a level.
+/// </summary>
 public class OnScreenInfo : MonoBehaviour {
+	/// <summary>
+	/// Controls to be displayed. Held in a string variable.
+	/// </summary>
 	string contrls = "\tH - Info/Controls\tT - Proceed to next level";
-	// Use this for initialization
+
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
 		if(Application.loadedLevel == 1) {
 			guiText.text = "<i>Game One: Level One</i>" + contrls;
@@ -14,10 +23,5 @@ public class OnScreenInfo : MonoBehaviour {
 		} else if(Application.loadedLevel == 4){
 			guiText.text = "<i>Game Two: Level Two</i>\tH - Info/Controls\tT - Proceed to end";
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

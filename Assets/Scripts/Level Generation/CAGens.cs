@@ -99,9 +99,9 @@ public class CAGens {
 	}
 
 	/// <summary>
-	/// Creates next generation based on rule. Copied the next generation array to the current generation array.
+	/// Creates next generation based on rule. Copies the next generation array to the current generation array.
 	/// </summary>
-	/// <param name="r">The reule to use to apply to the current generation.</param>
+	/// <param name="r">The rule to use to apply to the current generation.</param>
 	public void nextGeneration(string r) {
 		string rules = r;
 		int[,] neighbours = countNeighbours();

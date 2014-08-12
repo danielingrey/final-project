@@ -33,18 +33,14 @@ public class PNHeightMap {
 	public void perlHghtMap(float xo, float yo){
 	float xoff = xo;
 	float yoff = yo;
-	float x = UnityEngine.Random.value; //start with a random seed value
-	//float x = 0.0f;
+	float x = UnityEngine.Random.value; //start with a random seed value for the perlin noise	
 	float y = x;
 	float hm;
-		//Debug.Log ("this works");
 		for(int i = 0; i < length; i++){
-			//Debug.Log ("this works too" + i);
 			y = 0.0f;
 			for(int j = 0; j < length; j++) {
 				hm = map(Mathf.PerlinNoise(x,y),0f,1f,0f,13f); //maps the PerlinNoise function's range of 0 to 1 to 0 to 13
 				arr2D[i,j] = Convert.ToInt32(Math.Floor(hm)); //converts the mapped value to an integer and floors the integer as a failsafe against gaps being created in the terrain
-				//Debug.Log (arr2D[i,j]);
 				y += yoff;
 			}
 			x += xoff;
@@ -60,9 +56,7 @@ public class PNHeightMap {
 	/// <param name="to1">Upper bound of value's current range.</param>
 	/// <param name="from2">Lower bound of target range.</param>
 	/// <param name="to2">Upper bound of target range.</param>
-	float map(float value, float start1, float stop1, float start2, float stop2) {
-		
-		return (value - start1) / (stop1 - start1) * (stop2 - start2) + stop2;
-		
+	float map(float value, float start1, float stop1, float start2, float stop2) {		
+		return (value - start1) / (stop1 - start1) * (stop2 - start2) + stop2;		
 	}
 }

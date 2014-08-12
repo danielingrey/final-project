@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartGameTest : MonoBehaviour {
-	//string[] levels;
+/// <summary>
+/// Start game. This script is run when the title screen loads.
+/// </summary>
+public class StartGame : MonoBehaviour {
+	/// <summary>
+	/// The countdown is used so the player can't accidentally press a key to load the first level before the title has appeared.
+	/// </summary>
 	float countdown = 5.0f;
 
-	// Use this for initialization
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
-		Screen.showCursor = false;
+		Screen.showCursor = false; //hide mouse cursor
+
+		//initialise StaticObjects variables
 		StaticObjects.terrainBuilt = false;
 		StaticObjects.caveBuilt = false;
 		StaticObjects.pnTBuilt = false;
@@ -16,8 +25,6 @@ public class StartGameTest : MonoBehaviour {
 		StaticObjects.pnTerrain = new int[128,128];
 		StaticObjects.cave = new int[64,64,60];
 		StaticObjects.ahCave = new int[64,64,16];
-		//StaticObjects.teleLength = 4.250f;
-
 
 		for(int x = 0; x < 128; x++) {
 			for(int z = 0; z < 128; z++) {
@@ -45,16 +52,16 @@ public class StartGameTest : MonoBehaviour {
 				}
 			}
 		}
-		Resources.LoadAll("Level Files");
 
+		Resources.LoadAll("Level Files"); //load resources folder
 	}
 
-
-	// Update is called once per frame
+	/// <summary>
+	/// Update is called once per frame.
+	/// </summary>
 	void Update () {
-		countdown -= Time.deltaTime;
-		if(countdown < 0.0f && Input.anyKeyDown) {
-			//Application.LoadLevel("TerrainPN");
+		countdown -= Time.deltaTime; //Time.deltaTime is the time in seconds it took to complete the last frame
+		if(countdown < 0.0f && Input.anyKeyDown) { //if countdown has reached zero allow the player to press a key to begin the game
 			Application.LoadLevel(1);
 		}
 

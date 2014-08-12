@@ -76,11 +76,6 @@ public class CA3D {
 	/// <param name="s">Type of seed.</param>
 	public void seed(string s) {
 		generation.seedCA(s,0.45f);
-		/*for(int x = 0; x < length; x++){
-			for(int z = 0; z < length; z++) {
-				caveArr[x,z,2] = generation.currentGen[x,z];
-			}
-		}*/
 	}
 
 	/// <summary>
@@ -106,6 +101,7 @@ public class CA3D {
 		string[] ruleArr = {"two","three"};
 		int b = 1;
 		nextGen = seedLevel+1;
+
 		//build walls upwards starting from seed level
 		for(int i = nextGen; i < seedLevel+startRoof+1; i++, nextGen++) {
 			if(b==1){
@@ -122,7 +118,8 @@ public class CA3D {
 				generation.currentGen[x,z] = caveArr[x,z,seedLevel]; // reset current generation to original seed generation
 			}
 		}
-		b = bitFlip(b); 
+		b = bitFlip(b);
+
 		//build walls downwards starting from seed level
 		for(int i = nextGen; i >= seedLevel-startFloor; i--, nextGen--) {
 			if(b==1){
@@ -132,7 +129,7 @@ public class CA3D {
 			}
 			b = bitFlip(b);
 		}
-		//nextGen = 17;
+
 		for(int i = nextGen; i >= 0; i--, nextGen--) {
 			fillNextGen ("roof", 1, nextGen);
 		}
@@ -189,24 +186,25 @@ public class CA3D {
 		}
 	}
 
+	/// <summary>
+	/// Builds a floor when the algorithm is used for exterior sections to fill in gaps as instantiation of cubes starts mid array, not from the bottom.
+	/// </summary>
 	public void buildFloor() {
 		for(int x = 0; x < length; x++) {
 			for(int z = 0; z < length; z++) {
 				int count = 0;
 				for(int y = 0; y < height; y++) {
-					if(caveArr[x,z,y] == 1) count++;
+					if(caveArr[x,z,y] == 1) count++; // check each (x,z) coordinate along the y axis for any 1's
 				}
-				if(count == 0) caveArr[x,z,20] = 1;
+				if(count == 0) caveArr[x,z,20] = 1; // if no 1's are found there is a gap so fill it in at the floor layer
 			}
 		}
 	}
 
 	/// <summary>
-	/// Optimises the cells.
+	/// Optimises the 3D cell array before instatiating cubes to cut down on load time/memory use.
 	/// </summary>
 	public void optimiseCells() {
-
-
 		nextGen = 0;
 		int[,,] optArr = new int[length,length,height];
 
@@ -221,61 +219,25 @@ public class CA3D {
 					}
 					
 					neighbours -= caveArr[x,z,y];
-					if((y==0) || (y==height-1)) {
+					if((y==0) || (y==height-1)) { //kill cells at the top and bottom of the array as these can't be seen by the player after instantiation of cubes
 						optArr[x,z,y] = 0;
 					}
-					else if((caveArr[x,z,y] == 1) && (neighbours == 8) && (caveArr[x,z,y+1] != 0) && (caveArr[x,z,y-1] != 0)) {
-						optArr[x,z,y] = 0;
-						//if(y == 0) optArr[x,z,y] = 0;
-						//if((y > 0) && (caveArr[x,z,y-1] != 0)) optArr[x,z,y] = 0; //this makes sure cells that make up the roof aren't removed
-					
+					else if((caveArr[x,z,y] == 1) && (neighbours == 8) && (caveArr[x,z,y+1] != 0) && (caveArr[x,z,y-1] != 0)) { //if a cell has 8 neighbours and cells above and below it then kill it
+						optArr[x,z,y] = 0;					
 					} else {
 						optArr[x,z,y] = caveArr[x,z,y];
 					}
 				}
 			}
 		}
-
 		caveArr = optArr; 			
 		trimCells();
-
 	}
 
 	/// <summary>
-	/// Trims the cells.
+	/// Kills the cells along the edges of the array as the player can't see these after instantiating the cubes.
 	/// </summary>
 	public void trimCells() {
-		/*int cut = c;
-		int xNum = 0;
-		int zNum = 0;
-		int xStNum = 0;
-		int zStNum = 0;
-
-		for (int i = 0; i < 4; i++) {
-			if(i==0) {
-				xNum = cut;
-				zNum = length;
-			} else if (i==1) {
-				xNum = length;
-				zNum = cut;
-			} else if (i==2) {
-				xStNum = length - cut;
-				xNum = length;
-				zNum = length;
-			} else if (i==3) {
-				zStNum = length - cut;
-				xNum = length;
-				zNum = length;
-			}
-			
-			for(int y = 0; y < height; y++) {
-				for(int x = xStNum; x < xNum; x++) {
-					for(int z = zStNum; z < zNum; z++) {
-						if(caveArr[x,z,y] == 1) caveArr[x,z,y] = 0;
-					}
-				}
-			}
-		}*/
 		int endCut = length-1;
 		for(int y = 1; y < height; y++) {
 			for(int i = 1; i < length; i++) {

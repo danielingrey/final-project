@@ -28,7 +28,6 @@ public class AdHoc {
 	/// The number of sections.
 	/// </summary>
 	private int sectNum;
-	//StreamReader file;
 	/// <summary>
 	/// Current line of text read from file.
 	/// </summary>
@@ -37,7 +36,6 @@ public class AdHoc {
 	/// Copy of the whole textfile.
 	/// </summary>
 	private string longLine;
-	//private string[] splitLines;
 	/// <summary>
 	/// Array holding each line of text.
 	/// </summary>
@@ -85,25 +83,15 @@ public class AdHoc {
 	private void getSection(string s) {
 		for(int i = 0; i < 16; i++) {
 			sects[i] = (TextAsset)Resources.Load(s + i, typeof(TextAsset)); //load current TextFile in to TextAsset array
-			//Debug.Log(sects[i].text.Length);
 			longLine = sects[i].text; //convert i'th TextFile to string
-			//Debug.Log (longLine);
 			string[] myLines = longLine.Split('\n'); //split by carriage return in to 8 row string array 
-			//Debug.Log(longLine.Length);
 			for(int j = 0; j < 8; j++) {
 				line = myLines[j]; //current row in string array
-				//Debug.Log(line);
 				for(int k = 0; k < 8; k++) {
 					for (int num = 0; num < 8; num++) {
 						lines [num] = Convert.ToString (line [k]); //convert current row from a string to a string array for integer conversion later
 					}
-					//Debug.Log(line);
-					//string ch = Convert.ToString(line);
-					//Debug.Log(ch[k]);
-					//int num = Convert.ToInt32 (line[k]);
-					//my3DArr [j, k, i] = Convert.ToInt32 (ch[k]);
-					my3DArr [j, k, i] = Convert.ToInt32 (lines [k]); //convert string at index k to integer and copy it to section array 
-					//Debug.Log(lines[k]);
+					my3DArr [j, k, i] = Convert.ToInt32 (lines [k]); //convert string at index k to integer and copy it to section array
 				}
 
 			}
