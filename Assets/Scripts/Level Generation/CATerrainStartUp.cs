@@ -10,17 +10,18 @@ public class CATerrainStartUp : MonoBehaviour {
 	int strtLev;
 	int roofLev;
 	int floorLev;
-	CreateMesh myMesh;
-	bool canCoRoutine = true;
-	public Transform cubePrefab;
-	public Transform player;
-	public GUITexture teleport;
+	//CreateMesh myMesh;
+	//bool canCoRoutine = true;
+	//public Transform cubePrefab;
+	//public Transform player;
+	//public GUITexture teleport;
+	LevelLoad ll;
 
 	void Start() {
 		//Stopwatch stopWatch = new Stopwatch();
 		//stopWatch.Start();
-
-		myMesh = new CreateMesh(length);
+		ll = gameObject.GetComponent<LevelLoad>();
+		//myMesh = new CreateMesh(length);
 		if(!StaticObjects.terrainBuilt){
 			strtLev = 20;//20
 			roofLev = 30;//26
@@ -34,6 +35,7 @@ public class CATerrainStartUp : MonoBehaviour {
 			myCA.buildWalls();
 			myCA.buildRoof();
 			myCA.optimiseCells();
+			myCA.buildFloor();
 
 			StaticObjects.terrain = myCA.caveArr;
 			//StaticObjects.terrain = (int[,,])myCA.caveArr.Clone();
@@ -49,13 +51,13 @@ public class CATerrainStartUp : MonoBehaviour {
 			StaticObjects.terrainBuilt = true;
 		}
 		//Debug.Log (StaticObjects.terrainBuilt);
-		setup();
+		ll.setup(length,height,StaticObjects.terrain,4,20);
 		//stopWatch.Stop();
 		//TimeSpan ts = stopWatch.Elapsed;
 		//print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 	
-	void setup() {
+	/*void setup() {
 
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {
@@ -99,5 +101,5 @@ public class CATerrainStartUp : MonoBehaviour {
 		Application.LoadLevel(4);
 		//Application.LoadLevel(2);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
-	}
+	}*/
 }

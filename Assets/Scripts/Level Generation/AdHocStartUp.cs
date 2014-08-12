@@ -30,23 +30,24 @@ public class AdHocStartUp : MonoBehaviour {
 	/// <summary>
 	/// My mesh.
 	/// </summary>
-	CreateMesh myMesh; 
+	//CreateMesh myMesh; 
 	/// <summary>
 	/// The can co routine.
 	/// </summary>
-	bool canCoRoutine = true;
+	//bool canCoRoutine = true;
 	/// <summary>
 	/// The cube prefab.
 	/// </summary>
-	public Transform cubePrefab;
+	//public Transform cubePrefab;
 	/// <summary>
 	/// The player.
 	/// </summary>
-	public Transform player;
+	//public Transform player;
 	/// <summary>
 	/// The teleport.
 	/// </summary>
-	public GUITexture teleport;
+	//public GUITexture teleport;
+	LevelLoad ll;
 
 	/// <summary>
 	/// Start this instance.
@@ -54,7 +55,8 @@ public class AdHocStartUp : MonoBehaviour {
 	void Start () {
 		//Stopwatch stopWatch = new Stopwatch();
 		//stopWatch.Start();
-		myMesh = new CreateMesh(sectNum);
+		//myMesh = new CreateMesh(sectNum);
+		ll = gameObject.GetComponent<LevelLoad>();
 		if(!StaticObjects.cahBuilt){
 			sectLen = 8;
 			myAdHoc = new AdHoc(sectLen, height, sectNum);
@@ -65,7 +67,7 @@ public class AdHocStartUp : MonoBehaviour {
 			StaticObjects.cahBuilt = true;
 			//textures
 		}
-		setup();
+		ll.setup(caveLen,height,StaticObjects.ahCave,3,0);
 		//stopWatch.Stop();
 		//TimeSpan ts = stopWatch.Elapsed;
 		//print ( ts.Seconds + "." + ts.Milliseconds); 
@@ -74,7 +76,7 @@ public class AdHocStartUp : MonoBehaviour {
 	/// <summary>
 	/// Setup this instance.
 	/// </summary>
-	void setup() {
+	/*void setup() {
 		for(int x = 0; x < caveLen; x++) {				
 			for( int z = 0; z < caveLen; z++) {
 				for(int y = 0; y < height; y++) {
@@ -114,5 +116,5 @@ public class AdHocStartUp : MonoBehaviour {
 		Application.LoadLevel(3);
 		//Application.LoadLevel(5);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
-	}
+	}*/
 }

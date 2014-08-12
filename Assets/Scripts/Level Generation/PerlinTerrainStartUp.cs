@@ -15,23 +15,24 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 	/// <summary>
 	/// The cube prefab.
 	/// </summary>
-	public Transform cubePrefab;
+	//public Transform cubePrefab;
 	/// <summary>
 	/// The player.
 	/// </summary>
-	public Transform player;
+	//public Transform player;
 	/// <summary>
 	/// The can co routine.
 	/// </summary>
-	bool canCoRoutine = true;
+	//bool canCoRoutine = true;
 	/// <summary>
 	/// The teleport.
 	/// </summary>
-	public GUITexture teleport;
+	//public GUITexture teleport;
 	/// <summary>
 	/// My mesh.
 	/// </summary>
-	CreateMesh myMesh;
+	//CreateMesh myMesh;
+	LevelLoad ll;
 
 	/// <summary>
 	/// Start this instance.
@@ -39,14 +40,15 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 	void Start () {
 		//Stopwatch stopWatch = new Stopwatch();
 		//stopWatch.Start();
-		myMesh = new CreateMesh(length);
+		ll = gameObject.GetComponent<LevelLoad>();
+		//myMesh = new CreateMesh(length);
 		if(!StaticObjects.pnTBuilt){
 			PNHeightMap myHM = new PNHeightMap(length);
 			myHM.perlHghtMap(0.05f,0.05f);
 			StaticObjects.pnTerrain = myHM.arr2D; //copy heightmap array to static variable so it isn't destroyed between scene transitions
 			StaticObjects.pnTBuilt = true;
 		}
-		setup();
+		ll.setup(length,2);
 		//stopWatch.Stop();
 		//TimeSpan ts = stopWatch.Elapsed;
 		//print ( ts.Seconds + "." + ts.Milliseconds); 
@@ -55,7 +57,7 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 	/// <summary>
 	/// Setup this instance.
 	/// </summary>
-	void setup() {
+	/*void setup() {
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {					
 				Transform cube = Instantiate(cubePrefab, new Vector3(x*1.5f, StaticObjects.pnTerrain[x,z]*1.5f, z*1.5f), Quaternion.identity) as Transform;							
@@ -91,6 +93,6 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 		Application.LoadLevel(2); // loads the next level/scene
 		//Application.LoadLevel(4);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
-	}
+	}*/
 
 }

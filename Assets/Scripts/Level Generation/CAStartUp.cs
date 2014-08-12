@@ -30,31 +30,33 @@ public class CAStartUp : MonoBehaviour {
 	/// <summary>
 	/// My mesh.
 	/// </summary>
-	CreateMesh myMesh;
+	//CreateMesh myMesh;
 	/// <summary>
 	/// The can co routine.
 	/// </summary>
-	bool canCoRoutine = true;
+	//bool canCoRoutine = true;
 	/// <summary>
 	/// The cube prefab.
 	/// </summary>
-	public Transform cubePrefab;
+	//public Transform cubePrefab;
 	/// <summary>
 	/// The player.
 	/// </summary>
-	public Transform player;
+	//public Transform player;
 	/// <summary>
 	/// The teleport.
 	/// </summary>
-	public GUITexture teleport;
+	//public GUITexture teleport;
 	//string[] textrs;
 	//public static int[,,] cave;
 	//public static bool built = false;
+	LevelLoad ll;
 
 	void Start() {
 		//Stopwatch stopWatch = new Stopwatch();
 		//stopWatch.Start();
-		myMesh = new CreateMesh(length);
+		//myMesh = new CreateMesh(length);
+		ll = gameObject.GetComponent<LevelLoad>();
 		if(!StaticObjects.caveBuilt){
 
 			strtLev = 20;//20
@@ -75,19 +77,19 @@ public class CAStartUp : MonoBehaviour {
 			StaticObjects.cave = myCA.caveArr;
 			StaticObjects.caveBuilt = true;
 		}
-		setup();
+		ll.setup(length,height,StaticObjects.cave,5,0);
 		//stopWatch.Stop();
 		//TimeSpan ts = stopWatch.Elapsed;
 		//print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 
-	void setup() {
-		/*myCA.seed("random");
+	/*void setup() {
+		myCA.seed("random");
 		myCA.fillNextGen("cave", 5, strtLev);
 		myCA.border();
 		myCA.buildWalls();
 		myCA.buildRoof();
-		myCA.optimiseCells();*/
+		myCA.optimiseCells();
 
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {
@@ -134,5 +136,5 @@ public class CAStartUp : MonoBehaviour {
 		Application.LoadLevel(5);
 		//Application.LoadLevel(3);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
-	}
+	}*/
 }

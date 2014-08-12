@@ -189,6 +189,18 @@ public class CA3D {
 		}
 	}
 
+	public void buildFloor() {
+		for(int x = 0; x < length; x++) {
+			for(int z = 0; z < length; z++) {
+				int count = 0;
+				for(int y = 0; y < height; y++) {
+					if(caveArr[x,z,y] == 1) count++;
+				}
+				if(count == 0) caveArr[x,z,20] = 1;
+			}
+		}
+	}
+
 	/// <summary>
 	/// Optimises the cells.
 	/// </summary>
