@@ -1,0 +1,18 @@
+PROJECT TITLE:
+Procedural Generation of Interactive Environments using Biologically Inspired Computation
+Project Approval Reference:
+ER/DI31/1
+I agree to take part in the above University of Sussex research project. I have had the project explained to me and I have read and understood the Information Sheet, which I may keep for records. I understand that agreeing to take part means that I am willing to:
+- Use a computer to:
+- play a game
+- submit a questionaire
+- Allow the researcher to collect anonymised data online
+I understand that any information I provide is confidential, and that no information that I disclose will lead to the identification of any individual in the reports on the project, either by the researcher or by any other party.
+I understand that my participation is voluntary, that I can choose not to participate in part or all of the project, and that I can withdraw at any stage of the project without being penalised or disadvantaged in any way.
+I consent to the processing of my personal information for the purposes of this research study. I understand that such information will be treated as strictly confidential and handled in accordance with the Data Protection Act 1998.
+Contact:
+Reasearcher: Daniel Ingrey
+Email: di31@sussex.ac.uk
+Supervisor: Dr Alice Eldridge
+Email: alicee@sussex.ac.uk
+Click accept to consent

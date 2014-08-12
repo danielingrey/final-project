@@ -1,13 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// CA gens. A class for handling 2D cellular automata.
+/// </summary>
 public class CAGens {
-	public int[,] currentGen{get;set;} // 2D representation of the current generation
-	public int[,] nextGen; // 2D representation of the next generation 
-	int border; // creates a border to give cells room to grow within the array
+	/// <summary>
+	/// 2D representation of the current generation
+	/// </summary>
+	/// <value>The current generation.</value>
+	public int[,] currentGen{get;set;} 
+	/// <summary>
+	/// 2D representation of the next generation
+	/// </summary>
+	public int[,] nextGen; 
+	/// <summary>
+	/// Creates a border to give cells room to grow within the array
+	/// </summary>
+	int border; 
+	/// <summary>
+	/// The length and width of the array
+	/// </summary>
 	int length;
 
-
+	/// <summary>
+	/// Initializes a new instance of the <see cref="CAGens"/> class.
+	/// </summary>
+	/// <param name="l">Length and width.</param>
+	/// <param name="b">Border width.</param>
 	public CAGens(int l, int b) {
 		length = l;
 		currentGen = new int[length,length];
@@ -19,8 +39,12 @@ public class CAGens {
 			}
 		}
 	}
-
-	// method to seed an initial starting point for the CA
+	 
+	/// <summary>
+	/// Method to seed an initial starting point for the CA. Only "random" is supported so far.
+	/// </summary>
+	/// <param name="s">Type of seed.</param>
+	/// <param name="f">Seed value</param>
 	public void seedCA(string s, float f) {
 		float seedVal = f;
 		if(s == "random") {
@@ -40,7 +64,10 @@ public class CAGens {
 		 
 	}
 
-	public void createBorder() { // after initial seeding border can be created to enclose the level
+	/// <summary>
+	/// After initial seeding border can be created to enclose the level
+	/// </summary>
+	public void createBorder() {  
 		int edge = 7; 
 		for(int i = 0; i < 4; i++) {
 			if (i > 1) edge = length-edge;
@@ -71,6 +98,10 @@ public class CAGens {
 
 	}
 
+	/// <summary>
+	/// Creates next generation based on rule. Copies the next generation array to the current generation array.
+	/// </summary>
+	/// <param name="r">The rule to use to apply to the current generation.</param>
 	public void nextGeneration(string r) {
 		string rules = r;
 		int[,] neighbours = countNeighbours();
@@ -78,6 +109,10 @@ public class CAGens {
 		currentGen = nextGen;
 	}
 
+	/// <summary>
+	/// Counts the neighbours of each cell excluding outlying cells.
+	/// </summary>
+	/// <returns>The number of neighbours for each cell.</returns>
 	public int[,] countNeighbours() {
 		int [,]neighbours = new int[length,length];			
 		for(int x = 1; x < length-1; x++) {
@@ -95,6 +130,11 @@ public class CAGens {
 				
 	}
 
+	/// <summary>
+	/// Applies the specifed rule to the current generation and updates the next generation.
+	/// </summary>
+	/// <param name="r">The specified rule to use.</param>
+	/// <param name="n">The neighbour count for each cell.</param>
 	public void applyRule(string r, int[,] n) {
 		int[,] neighbours = n;
 		
