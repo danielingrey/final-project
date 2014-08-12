@@ -18,7 +18,7 @@ public class PlayerSounds : MonoBehaviour {
 	void Update () {
 		//float endPlay = 0;
 		CharacterController controller = transform.GetComponent<CharacterController>();
-		Debug.Log (controller.velocity.y);
+		//Debug.Log (controller.velocity.y);
 		if (Input.GetKeyDown("space") && controller.isGrounded) {
 			int rand = Random.Range(0,3);
 			audio.PlayOneShot(blasts[rand]);

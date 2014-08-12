@@ -3,33 +3,58 @@ using System.Collections;
 using System;
 using System.Diagnostics;
 
+/// <summary>
+/// Perlin terrain start up script. Creates a perlin heightmap object and instantiates cubes in to the level based on array coordinates held within the heightmap.
+/// </summary>
 public class PerlinTerrainStartUp : MonoBehaviour {
+	/// <summary>
+	/// The length/width of the level in cubes.
+	/// </summary>
 	int length = 128;
 	//int height = 60;
+	/// <summary>
+	/// The cube prefab.
+	/// </summary>
 	public Transform cubePrefab;
+	/// <summary>
+	/// The player.
+	/// </summary>
 	public Transform player;
+	/// <summary>
+	/// The can co routine.
+	/// </summary>
 	bool canCoRoutine = true;
+	/// <summary>
+	/// The teleport.
+	/// </summary>
 	public GUITexture teleport;
-
+	/// <summary>
+	/// My mesh.
+	/// </summary>
 	CreateMesh myMesh;
 
-	// Use this for initialization
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
-		Stopwatch stopWatch = new Stopwatch();
-		stopWatch.Start();
-		myMesh = new CreateMesh(128);
+		//Stopwatch stopWatch = new Stopwatch();
+		//stopWatch.Start();
+		myMesh = new CreateMesh(length);
 		if(!StaticObjects.pnTBuilt){
-			PNHeightMap myHM = new PNHeightMap(128);
+			PNHeightMap myHM = new PNHeightMap(length);
 			myHM.perlHghtMap(0.05f,0.05f);
-			StaticObjects.pnTerrain = myHM.arr2D;
+			StaticObjects.pnTerrain = myHM.arr2D; //copy heightmap array to static variable so it isn't destroyed between scene transitions
 			StaticObjects.pnTBuilt = true;
 		}
 		setup();
-		stopWatch.Stop();
-		TimeSpan ts = stopWatch.Elapsed;
-		print ( ts.Seconds + "." + ts.Milliseconds); 
+		//stopWatch.Stop();
+		//TimeSpan ts = stopWatch.Elapsed;
+		//print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 
+	/// <summary>
+	/// Setup this instance.
+	/// </summary>
 	void setup() {
 		for(int x = 0; x < length; x++) {				
 			for( int z = 0; z < length; z++) {					
@@ -42,22 +67,28 @@ public class PerlinTerrainStartUp : MonoBehaviour {
 		audio.Play();
 	}
 
+	/// <summary>
+	/// Update is run every frame. If "T" is pressed a coroutine is started to wait until the teleport sound has finished playing before transitioning to the next level.
+	/// </summary>
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.T) && canCoRoutine) {
 			StartCoroutine(waitForSound());
 		}
 		if (!canCoRoutine) {
-			Instantiate(teleport);
-			teleport.transform.localScale += new Vector3(0.01f, 0.01f, 0);
+			Instantiate(teleport); //create 2D teleport texture on screen
+			teleport.transform.localScale += new Vector3(0.01f, 0.01f, 0); //zoom in each frame on texture to create teleport animation on screen
 		}
 	}
 
+	/// <summary>
+	/// Waits for the length of the teleport sound before transitioning to the next level. Resets the teleport 2D texture to normal size.
+	/// </summary>
 	IEnumerator waitForSound() {
-
 		canCoRoutine = false;
+
 		yield return new WaitForSeconds(3.0f);
 
-		Application.LoadLevel(2);
+		Application.LoadLevel(2); // loads the next level/scene
 		//Application.LoadLevel(4);
 		teleport.transform.localScale = new Vector3(2, 2, 1);
 	}

@@ -3,24 +3,57 @@ using System.Collections;
 using System;
 using System.Diagnostics;
 
+/// <summary>
+/// CA start up.
+/// </summary>
 public class CAStartUp : MonoBehaviour {
+	/// <summary>
+	/// The length.
+	/// </summary>
 	int length = 128;
+	/// <summary>
+	/// The height.
+	/// </summary>
 	int height = 100;
+	/// <summary>
+	/// The strt lev.
+	/// </summary>
 	int strtLev;
+	/// <summary>
+	/// The roof lev.
+	/// </summary>
 	int roofLev;
+	/// <summary>
+	/// The floor lev.
+	/// </summary>
 	int floorLev;
+	/// <summary>
+	/// My mesh.
+	/// </summary>
 	CreateMesh myMesh;
+	/// <summary>
+	/// The can co routine.
+	/// </summary>
 	bool canCoRoutine = true;
+	/// <summary>
+	/// The cube prefab.
+	/// </summary>
 	public Transform cubePrefab;
+	/// <summary>
+	/// The player.
+	/// </summary>
 	public Transform player;
+	/// <summary>
+	/// The teleport.
+	/// </summary>
 	public GUITexture teleport;
 	//string[] textrs;
 	//public static int[,,] cave;
 	//public static bool built = false;
 
 	void Start() {
-		Stopwatch stopWatch = new Stopwatch();
-		stopWatch.Start();
+		//Stopwatch stopWatch = new Stopwatch();
+		//stopWatch.Start();
 		myMesh = new CreateMesh(length);
 		if(!StaticObjects.caveBuilt){
 
@@ -43,9 +76,9 @@ public class CAStartUp : MonoBehaviour {
 			StaticObjects.caveBuilt = true;
 		}
 		setup();
-		stopWatch.Stop();
-		TimeSpan ts = stopWatch.Elapsed;
-		print ( ts.Seconds + "." + ts.Milliseconds); 
+		//stopWatch.Stop();
+		//TimeSpan ts = stopWatch.Elapsed;
+		//print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 
 	void setup() {

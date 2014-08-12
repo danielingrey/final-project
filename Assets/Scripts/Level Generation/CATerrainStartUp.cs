@@ -17,8 +17,8 @@ public class CATerrainStartUp : MonoBehaviour {
 	public GUITexture teleport;
 
 	void Start() {
-		Stopwatch stopWatch = new Stopwatch();
-		stopWatch.Start();
+		//Stopwatch stopWatch = new Stopwatch();
+		//stopWatch.Start();
 
 		myMesh = new CreateMesh(length);
 		if(!StaticObjects.terrainBuilt){
@@ -50,9 +50,9 @@ public class CATerrainStartUp : MonoBehaviour {
 		}
 		//Debug.Log (StaticObjects.terrainBuilt);
 		setup();
-		stopWatch.Stop();
-		TimeSpan ts = stopWatch.Elapsed;
-		print ( ts.Seconds + "." + ts.Milliseconds); 
+		//stopWatch.Stop();
+		//TimeSpan ts = stopWatch.Elapsed;
+		//print ( ts.Seconds + "." + ts.Milliseconds); 
 	}
 	
 	void setup() {

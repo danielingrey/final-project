@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// CA3D.
+/// CA3D. Used to create 3D indoor caves and 3D outdoor terrain using stacks of 2D cellular automata held within a 3D array of 1s and 0s.
 /// </summary>
 public class CA3D {
 	/// <summary>
@@ -10,7 +10,7 @@ public class CA3D {
 	/// </summary>
 	CAGens generation;
 	/// <summary>
-	/// Gets or sets the level array.
+	/// The level array.
 	/// </summary>
 	/// <value>The level array.</value>
 	public int[,,] caveArr{get;set;}

@@ -16,7 +16,7 @@ public class StartGameTest : MonoBehaviour {
 		StaticObjects.pnTerrain = new int[128,128];
 		StaticObjects.cave = new int[64,64,60];
 		StaticObjects.ahCave = new int[64,64,16];
-		StaticObjects.teleLength = 4.250f;
+		//StaticObjects.teleLength = 4.250f;
 
 
 		for(int x = 0; x < 128; x++) {

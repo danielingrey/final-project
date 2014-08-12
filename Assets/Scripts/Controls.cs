@@ -21,7 +21,8 @@ public class Controls : MonoBehaviour {
 			"\nD - Move right" +
 			"\nSpace - Jump (hold to jump further)\n" +
 			"T - Teleport to " + next + "" +
-			"\nH - Begin playing/Display these instructions";
+			"\nH - Begin playing/Display these instructions" +
+			"\nEsc - Quit";
 		if(Application.loadedLevel == 1) {
 			guiText.text = "<size=29><i>Game One\nLevel One</i></size>\n\n" + controls;
 		} else if(Application.loadedLevel == 2) {
@@ -46,13 +47,13 @@ public class Controls : MonoBehaviour {
 					"\nD - Move right" +
 					"\nSpace - Jump (hold to jump further)\n" +
 					"T - Teleport to " + next + "" +
-					"\nH - Begin playing/Display these instructions";		
-			//"\nEsc - Quit";
+					"\nH - Begin playing/Display these instructions" +		
+					"\nEsc - Quit";
 
 			guiText.text = "<size=29><i>Game Two\nLevel Two</i></size>\n\n" + controls;
 		} else if(Application.loadedLevelName == "EndOfGame") {
-			//guiText.text = "Thank you for playing.\n\nPress escape to exit.";
-			guiText.text = "Thank you for playing\n\nClick next to proceed to questionnaire";
+			guiText.text = "Thank you for playing.\n\nPress escape to exit.";
+			//guiText.text = "Thank you for playing\n\nClick next to proceed to questionnaire";
 		}
 	}
 	

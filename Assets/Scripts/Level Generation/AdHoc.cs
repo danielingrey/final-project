@@ -4,7 +4,7 @@ using System.IO;
 using System;
 
 /// <summary>
-/// Ad hoc.
+/// Ad hoc. This class uses TextFile templates placed in Unity's Resources folder to create pseudo-random interior environments.
 /// </summary>
 public class AdHoc {
 	/// <summary>
@@ -78,47 +78,31 @@ public class AdHoc {
 		}
 	}
 
-	/*void getSection() {
-		TextAsset[] sects = new TextAsset[16];
-		for(int i = 0; i < 16; i++) {
-			sects[i] = (TextAsset)Resources.Load(@"Level Files/Corners/CornersTL/corner0/cornerTL" + i, typeof(TextAsset));
-			//longLine = sects[i].text;
-		}
-		Debug.Log(sects[0].text);
-
-
-	}*/
-
 	/// <summary>
-	/// Gets a section.
+	/// Gets a section from the Resources folder. Converts it from 16 TextFiles of 8 rows of 8 characters to a 16x8x8 integer array.
 	/// </summary>
 	/// <param name="s">String of datapath to a section folder.</param>
 	private void getSection(string s) {
-		//my3DArr = new int[8,8,16];
 		for(int i = 0; i < 16; i++) {
-			//sects[i] = (TextAsset)Resources.Load(@"Level Files/Corners/CornersTL/corner0/cornerTL" + i, typeof(TextAsset));
-			sects[i] = (TextAsset)Resources.Load(s + i, typeof(TextAsset));
-			//longLine = sects[i].text;
+			sects[i] = (TextAsset)Resources.Load(s + i, typeof(TextAsset)); //load current TextFile in to TextAsset array
 			//Debug.Log(sects[i].text.Length);
-			longLine = sects[i].text;
+			longLine = sects[i].text; //convert i'th TextFile to string
 			//Debug.Log (longLine);
-
-			string[] myLines = longLine.Split('\n');
+			string[] myLines = longLine.Split('\n'); //split by carriage return in to 8 row string array 
 			//Debug.Log(longLine.Length);
 			for(int j = 0; j < 8; j++) {
-				line = myLines[j];
+				line = myLines[j]; //current row in string array
 				//Debug.Log(line);
 				for(int k = 0; k < 8; k++) {
 					for (int num = 0; num < 8; num++) {
-						lines [num] = Convert.ToString (line [k]);
-
+						lines [num] = Convert.ToString (line [k]); //convert current row from a string to a string array for integer conversion later
 					}
 					//Debug.Log(line);
 					//string ch = Convert.ToString(line);
 					//Debug.Log(ch[k]);
 					//int num = Convert.ToInt32 (line[k]);
 					//my3DArr [j, k, i] = Convert.ToInt32 (ch[k]);
-					my3DArr [j, k, i] = Convert.ToInt32 (lines [k]);
+					my3DArr [j, k, i] = Convert.ToInt32 (lines [k]); //convert string at index k to integer and copy it to section array 
 					//Debug.Log(lines[k]);
 				}
 
@@ -126,58 +110,39 @@ public class AdHoc {
 		}
 	}
 
-	/*void getSection(string s) {
-		for (int k = 0; k < 16; k++) {			
-			file = new StreamReader (s + k + ".txt");
-			for (int i = 0; i < 8; i++) {
-				line = file.ReadLine ();
-				for (int j = 0; j < 8; j++) {
-					for (int num = 0; num < 8; num++) {
-						lines [num] = Convert.ToString (line [j]);
-					}
-					my3DArr [i, j, k] = Convert.ToInt32 (lines [j]);					
-
-				}
-			}
-			file.Close ();
-		}
-	}*/
-
 	/// <summary>
-	/// Adds probabalistic randomisation to a section.
+	/// Adds randomisation to a section's floor and ceiling by placing extra cells above or below live cells using random number generation and probability. 
 	/// </summary>
 	/// <param name="s">Type of section.</param>
 	private void randomiseSection(string s) {
 		float prob;
 		string section = s;
+		//set probability dependent on type of section
 		if(section == "wall") {
 			prob = 0.05f;
 		} else if (section == "interior") {
 			prob = 0.2f;
 		} else {
 			prob = 0f;
-		}
-		//int rand = UnityEngine.Random.Range(0,3);
-		//for(int i = 0; i < rand; i++) {
-		//for(int y = 0; y < 16; y++) {	
-			for(int x = 0; x < 8; x++) {				
-				for( int z = 0; z < 8; z++) {
-					for(int y = 0; y < 16; y++) {
-					if(y-1 >= 0 && y < 4)  {
-							if (UnityEngine.Random.value < prob){								
-									if (my3DArr[x,z,y-1] == 1) my3DArr[x,z,y] = 1;								
-							}
-					} else if(y+1 <= 15 && y >= 8) {
-						if (UnityEngine.Random.value < prob){								
-							if (my3DArr[x,z,y+1] == 1) my3DArr[x,z,y] = 1;								
-						}
+		}			
+		for(int x = 0; x < 8; x++) {				
+			for( int z = 0; z < 8; z++) {
+				for(int y = 0; y < 16; y++) {
+				if(y-1 >= 0 && y < 4)  {
+					//if random value less than probabilty place a live cell above a "floor" cell
+					if (UnityEngine.Random.value < prob){								
+							if (my3DArr[x,z,y-1] == 1) my3DArr[x,z,y] = 1;								
 					}
-
-					} 
+				} else if(y+1 <= 15 && y >= 8) {
+					//if random value less than probabilty place a live cell below a "ceiling" cell
+					if (UnityEngine.Random.value < prob){								
+						if (my3DArr[x,z,y+1] == 1) my3DArr[x,z,y] = 1;								
+					}
 				}
-				
-			}
-		//}
+
+				} 
+			}			
+		}
 	}
 
 	/// <summary>
@@ -186,20 +151,14 @@ public class AdHoc {
 	public void placeCorners() {
 		//Top left
 		getSection(@"Level Files/Corners/CornersTL/corner0/cornerTL");
-
-		//getSection ();
-		//getSection (path + @"\Assets\Level Files\Corners\CornersTL\corner0\cornerTL");
 		placeSection(0,0);
 		//Top right
-		//getSection (path + @"\Assets\Level Files\Corners\CornersTR\corner0\cornerTR");
 		getSection ( @"Level Files/Corners/CornersTR/corner0/cornerTR");
 		placeSection(0,7);
 		//Bottom left
-		//getSection (path + @"\Assets\Level Files\Corners\CornersBL\corner0\cornerBL");
 		getSection (@"Level Files/Corners/CornersBL/corner0/cornerBL");
 		placeSection(7,0);
 		//Bottom right
-		//getSection (path + @"\Assets\Level Files\Corners\CornersBR\corner0\cornerBR");
 		getSection (@"Level Files/Corners/CornersBR/corner0/cornerBR");
 		placeSection(7,7);
 	}
@@ -210,28 +169,24 @@ public class AdHoc {
 	public void placeWalls() {
 		string section = "wall";
 		//top
-		//getSection (path + @"\Assets\Level Files\Walls\WallsT\wall0\wallT");
 		getSection (@"Level Files/Walls/WallsT/wall0/wallT");
 		for (int i = 1; i < 7; i++) {
 			randomiseSection(section);
 			placeSection(0,i);
 		}
 		//right
-		//getSection (path + @"\Assets\Level Files\Walls\WallsR\wall0\wallR");
 		getSection (@"Level Files/Walls/WallsR/wall0/wallR");
 		for (int i = 1; i < 7; i++) {
 			randomiseSection(section);
 			placeSection(i,7);
 		}
 		//bottom
-		//getSection (path + @"\Assets\Level Files\Walls\WallsB\wall0\wallB");
 		getSection (@"Level Files/Walls/WallsB/wall0/wallB");
 		for (int i = 1; i < 7; i++) {
 			randomiseSection(section);
 			placeSection(7,i);
 		}
 		//left
-		//getSection (path + @"\Assets\Level Files\Walls\WallsL\wall0\wallL");
 		getSection (@"Level Files/Walls/WallsL/wall0/wallL");
 		for (int i = 1; i < 7; i++) {
 			randomiseSection(section);
@@ -246,8 +201,7 @@ public class AdHoc {
 		string section = "interior";
 		for (int i = 1; i < 7; i++) {
 			for (int j = 1; j < 7; j++) {
-				int rand = UnityEngine.Random.Range(0,5);
-				//getSection (path + @"\Assets\Level Files\Interiors\interior" + rand + @"\interior");
+				int rand = UnityEngine.Random.Range(0,5); //randomly choose an interior section from the available templates
 				getSection (@"Level Files/Interiors/interior" + rand + @"/interior");
 				randomiseSection(section);
 				placeSection(i,j);

@@ -1,22 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Used to get coordinates of cubes within sections of the level to be combined later as meshes.
+/// </summary>
 public class CreateMesh {
 
-
+	/// <summary>
+	/// The number of meshes.
+	/// </summary>
 	int meshNum = 64;
+	/// <summary>
+	/// Gets or sets the mesh tag string array.
+	/// </summary>
+	/// <value>The mesh tags.</value>
 	public string[] meshTags{get;set;}
+	/// <summary>
+	/// level length/widths must be multiples of 8. This holds the level length/width divided by 8.
+	/// </summary>
 	int eighth;
 
-
+	/// <summary>
+	/// Initializes a new instance of the <see cref="CreateMesh"/> class.
+	/// </summary>
+	/// <param name="n">length/width of the level.</param>
 	public CreateMesh(int n) {
 		eighth = n/8;
 		meshTags = new string[meshNum];
-		for (int i = 0; i < meshNum; i++) {
+		for (int i = 0; i < meshNum; i++) { // add mesh tag names to the string array to correspond with the tag names in the unity editor.
 			meshTags[i] = "mesh" + (i+1);
 		}
 	}
 
+	/// <summary>
+	/// Gets the mesh tag's array index to be applied to the current cube. Used by the 3D arrays.
+	/// </summary>
+	/// <returns>The mesh tag index.</returns>
+	/// <param name="x">The x coordinate.</param>
+	/// <param name="z">The z coordinate.</param>
+	/// <param name="y">The y coordinate.</param>
 	public int getMesh(int x, int z,int y) {
 		
 		if((x < eighth) && (z < eighth)) return 0;			 
@@ -87,6 +109,12 @@ public class CreateMesh {
 		return 0;
 	}
 
+	/// <summary>
+	/// Gets the mesh tag's array index to be applied to the current cube. Used by the 2D Perlin Noise array.
+	/// </summary>
+	/// <returns>The mesh tag index.</returns>
+	/// <param name="x">The x coordinate.</param>
+	/// <param name="z">The z coordinate.</param>
 	public int getMesh(int x, int z) {
 		
 		if((x < eighth) && (z < eighth)) return 0;			 
